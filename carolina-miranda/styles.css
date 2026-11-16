@@ -1,0 +1,348 @@
+/* Carolina Miranda — protótipo de direção visual (ver DESIGN.md desta pasta).
+   Ideia: "do fio à make". A página é a hora de se arrumar. */
+
+@font-face { font-family: "Bodoni Moda"; src: url("fonts/bodoni-moda-variavel.woff2") format("woff2"); font-weight: 400 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Bodoni Moda"; src: url("fonts/bodoni-moda-italica-variavel.woff2") format("woff2"); font-weight: 400 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("fonts/instrument-sans-variavel.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+
+/* ---------- Temas: make de noite (padrão) e make de dia ---------- */
+:root, :root[data-tema="noite"] {
+  --fundo: #1A0F16;        /* ameixa da noite */
+  --fundo-2: #26151F;      /* estojo */
+  --texto: #F7EAE5;        /* pó de arroz */
+  --texto-2: #DCC7C1;      /* nude */
+  --rose: #E6A999;         /* ouro rosé */
+  --champanhe: #F8DFC0;    /* iluminador */
+  --batom: #D2476F;        /* batom */
+  --acao: #F3C6B4;         /* botão */
+  --acao-texto: #1A0F16;
+  --linha: rgba(230, 169, 153, .28);
+  --fio-1: #B9785C; --fio-2: #E6A999; --fio-3: #8E5A46; --fio-4: #F4CFAE;
+  --prancha: #3A2330; --prancha-2: #120A0F;
+  --sombra: #A8648A;       /* sombra ameixa */
+  --metal: linear-gradient(100deg, #C98670 0%, #F8DFC0 28%, #E6A999 46%, #B9785C 62%, #F8DFC0 82%, #D99C88 100%);
+  color-scheme: dark;
+}
+:root[data-tema="dia"] {
+  --fundo: #FBF0EC;        /* pó compacto */
+  --fundo-2: #F3DDD6;
+  --texto: #2A1520;
+  --texto-2: #5C3B45;
+  --rose: #A5503F;
+  --champanhe: #B97F4C;
+  --batom: #A21F49;
+  --acao: #8C1B40;
+  --acao-texto: #FFF6F2;
+  --linha: rgba(140, 27, 64, .22);
+  --fio-1: #7A4632; --fio-2: #B4745C; --fio-3: #55301F; --fio-4: #D49C78;
+  --prancha: #2A1520; --prancha-2: #120A0F;
+  --sombra: #7A3B5C;
+  --metal: linear-gradient(100deg, #8C3F2E 0%, #C98A5B 28%, #A5503F 46%, #6E2E22 62%, #C98A5B 82%, #8C3F2E 100%);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;            /* texto principal encorpado: lê melhor em tela pequena e com vista cansada */
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .6s ease, color .6s ease;
+}
+h1, h2, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--champanhe); outline-offset: 4px; border-radius: 6px; }
+
+/* O fundo fica no fundo: o brilho passa atrás de todo o conteúdo. */
+#brilho { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.topo, main, .rodape { position: relative; z-index: 1; }
+
+/* ---------- Topo ---------- */
+.topo {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  padding: max(10px, env(safe-area-inset-top)) 20px 0;
+  z-index: 5;
+}
+.faixa-demo { flex: 0 0 100%; font-size: .75rem; color: var(--texto-2); padding-bottom: 6px; border-bottom: 1px solid var(--linha); }
+.marca { font-family: "Bodoni Moda", serif; font-size: 1.25rem; font-weight: 500; letter-spacing: .04em; text-decoration: none; color: var(--rose); padding: 10px 4px; }
+.chaves { display: flex; gap: 6px; }
+.chave { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 6px; font-size: .8125rem; color: var(--texto-2); }
+.chave i { width: 30px; height: 18px; border-radius: 9px; border: 1px solid var(--linha); position: relative; transition: background-color .3s; }
+.chave i::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--texto-2); transition: transform .3s cubic-bezier(.3, 1.4, .5, 1), background-color .3s; }
+.chave[aria-pressed="true"] i { background: color-mix(in srgb, var(--rose) 22%, transparent); }
+.chave[aria-pressed="true"] i::after { transform: translateX(12px); background: var(--rose); }
+
+/* ---------- Abertura ---------- */
+.abertura {
+  position: relative;
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 96px 20px 72px;
+  overflow: hidden;
+}
+.abertura-miolo { position: relative; z-index: 1; width: 100%; max-width: 1080px; margin: 0 auto; }
+.oficio { font-size: 1rem; color: var(--texto-2); margin-bottom: 14px; }
+#nome {
+  font-family: "Bodoni Moda", "Didot", "Bodoni 72", serif;
+  font-weight: 600;
+  font-variation-settings: "opsz" 40;
+  font-size: clamp(4.1rem, 20.5vw, 11rem);
+  line-height: .9;
+  letter-spacing: -.025em;
+  margin-left: -.04em;
+}
+#nome .linha { display: block; white-space: nowrap; padding-bottom: .08em; }
+#nome .linha:nth-child(2) { padding-left: .52em; font-style: italic; font-weight: 500; }
+/* Ouro rosé no nome: o reflexo anda com a rolagem e com o toque. */
+#nome .linha {
+  background: var(--metal); background-size: 240% 100%;
+  background-position: var(--reflexo, 30%) 0;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+}
+
+.frase { font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 500; font-variation-settings: "opsz" 16; font-size: clamp(1.5rem, 6.4vw, 2.4rem); line-height: 1.15; margin-top: 22px; max-width: 15ch; text-wrap: balance; }
+.apoio { margin-top: 12px; color: var(--texto-2); max-width: 30ch; }
+.abertura-acao { margin-top: 28px; display: grid; width: fit-content; max-width: 100%; justify-items: center; gap: 22px; }
+.domicilio { display: inline-flex; align-items: center; gap: 8px; color: var(--rose); font-weight: 600; font-size: .9375rem; text-align: center; }
+.domicilio svg { flex: none; }
+.domicilio svg { width: 20px; height: 20px; }
+.traco { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.cheio { fill: currentColor; }
+
+.fio-abertura { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.fio-abertura path { fill: none; stroke: var(--rose); stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-linecap: round; opacity: .75; }
+.dica-rolar { position: absolute; left: 20px; bottom: max(22px, env(safe-area-inset-bottom)); font-size: .875rem; color: var(--texto-2); z-index: 1; }
+
+/* ---------- Botão de ação (um só, sempre igual) ---------- */
+.botao {
+  position: relative; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 54px; padding: 0 26px;
+  border-radius: 999px;
+  background: var(--acao); color: var(--acao-texto);
+  font-weight: 700; font-size: 1.0625rem; text-decoration: none;
+  box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--acao) 70%, transparent);
+  transition: transform .25s cubic-bezier(.3, 1.5, .5, 1);
+}
+.botao svg { width: 24px; height: 24px; flex: none; }
+.botao:active { transform: scale(.97); }
+/* Passada de iluminador no botão */
+.botao::after { content: ""; position: absolute; top: 0; bottom: 0; left: -40%; width: 30%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55), transparent); transform: skewX(-18deg); }
+.vivo .botao::after { animation: passada 4.5s ease-in-out 2s infinite; }
+@keyframes passada { 0%, 62% { left: -40%; } 100% { left: 130%; } }
+
+/* ---------- Momento ---------- */
+section { padding: 0 20px; }
+h2 { font-family: "Bodoni Moda", serif; font-weight: 600; font-variation-settings: "opsz" 18; font-size: clamp(2.1rem, 9.5vw, 4rem); line-height: 1.02; letter-spacing: -.015em; }
+.momento { padding-top: 56px; padding-bottom: 96px; max-width: 1080px; margin: 0 auto; }
+.momento h2 { max-width: 13ch; }
+.momento-apoio { margin-top: 14px; color: var(--texto-2); }
+.momentos { margin-top: 30px; display: grid; gap: 4px; }
+.pincelada {
+  position: relative; text-align: left;
+  min-height: 64px; padding: 10px 14px 10px 4px;
+  font-family: "Bodoni Moda", serif; font-weight: 500; font-variation-settings: "opsz" 16; font-size: clamp(1.7rem, 7.6vw, 2.8rem); line-height: 1.1;
+  color: var(--texto-2);
+  border-bottom: 1px solid var(--linha);
+  transition: color .35s, padding-left .45s cubic-bezier(.2, .9, .3, 1);
+}
+.pincelada span { position: relative; z-index: 1; }
+/* A pincelada de blush que marca a escolha */
+.pincelada::before {
+  content: ""; position: absolute; z-index: 0;
+  left: -8px; right: 12%; top: 16%; bottom: 14%;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--batom) 78%, transparent), color-mix(in srgb, var(--batom) 46%, transparent) 70%, transparent);
+  border-radius: 46% 54% 60% 40% / 62% 44% 56% 38%;
+  transform: scaleX(0) rotate(-1.2deg); transform-origin: 0 50%;
+  filter: blur(1.5px);
+  transition: transform .6s cubic-bezier(.2, .9, .25, 1);
+}
+:root[data-tema="dia"] .pincelada::before { background: linear-gradient(90deg, var(--batom), color-mix(in srgb, var(--batom) 82%, transparent) 72%, transparent); }
+.pincelada[aria-checked="true"] { color: #FFF6F2; padding-left: 16px; font-style: italic; }
+.pincelada[aria-checked="true"]::before { transform: scaleX(1) rotate(-1.2deg); }
+.parado .pincelada, .parado .pincelada::before { transition: none; }
+
+.recado { margin-top: 30px; padding: 18px 20px 20px; background: var(--fundo-2); border-radius: 22px 22px 22px 6px; max-width: 34rem; border: 1px solid var(--linha); }
+.recado-rotulo { font-size: .8125rem; color: var(--texto-2); margin-bottom: 6px; }
+.recado-texto { min-height: 4.7em; font-size: 1.0625rem; }
+.recado-texto::after { content: ""; display: inline-block; width: 2px; height: 1.05em; margin-left: 2px; vertical-align: -.15em; background: var(--rose); opacity: 0; }
+.recado-texto.digitando::after { opacity: 1; }
+.recado-enviar { margin-top: 14px; width: 100%; }
+.recado-nota { margin-top: 10px; font-size: .8125rem; color: var(--texto-2); }
+
+/* ---------- Cabelo ---------- */
+.cabelo { padding: 0; }
+.cabelo-palco {
+  position: relative;
+  height: 100svh; min-height: 600px;
+  max-width: 1080px; margin: 0 auto;
+  padding: 72px 20px 96px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
+.cabelo-texto { position: relative; z-index: 2; max-width: 58%; }
+.cabelo-apoio { margin-top: 10px; color: var(--texto-2); font-size: .9375rem; max-width: 20ch; }
+.mecha-area { position: absolute; top: 0; bottom: 0; right: -4%; width: 64%; max-width: 420px; z-index: 1; }
+.mecha { width: 100%; height: 100%; overflow: visible; }
+#fios path { fill: none; stroke-linecap: round; }
+.mecha { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%); mask-image: linear-gradient(to bottom, transparent 0, #000 9%); }
+#luzes path { fill: none; stroke: var(--champanhe); stroke-linecap: round; opacity: .85; }
+.f1 { stroke: var(--fio-1); } .f2 { stroke: var(--fio-2); } .f3 { stroke: var(--fio-3); } .f4 { stroke: var(--fio-4); }
+.prancha-corpo { fill: var(--prancha); stroke: var(--rose); stroke-width: 1; }
+.prancha-cabo { fill: var(--prancha); stroke: var(--rose); stroke-width: 1; }
+.prancha-placa { fill: var(--prancha-2); }
+.prancha-calor { fill: var(--batom); opacity: .0; filter: blur(3px); }
+.prancha-luz { fill: var(--batom); }
+.vapor { fill: none; stroke: var(--texto); stroke-width: 2.4; stroke-linecap: round; opacity: 0; filter: blur(2.2px); }
+.vivo .quente .vapor { animation: vapor 1.5s ease-out infinite; }
+.vivo .quente .v2 { animation-delay: .45s; }
+.vivo .quente .v3 { animation-delay: .9s; }
+.vivo .quente .prancha-calor { opacity: .8; }
+@keyframes vapor { 0% { opacity: 0; transform: translateY(6px); } 30% { opacity: .5; } 100% { opacity: 0; transform: translateY(-22px); } }
+
+.valores { position: absolute; z-index: 2; left: 20px; bottom: 104px; width: min(45%, 300px); display: grid; gap: 14px; }
+.valores li { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--linha); }
+.valor-nome { font-size: 1rem; color: var(--texto); font-weight: 600; line-height: 1.25; }
+.valor-preco { font-family: "Bodoni Moda", serif; font-weight: 600; font-variation-settings: "opsz" 18; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1; white-space: nowrap; }
+.valor-preco small { font-family: "Instrument Sans", sans-serif; font-weight: 500; font-size: .8125rem; color: var(--texto-2); letter-spacing: 0; display: block; margin-bottom: 4px; }
+.valor-fim { font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 500; font-variation-settings: "opsz" 14; font-size: 1.3rem; color: var(--rose); border-top: 0 !important; }
+.vivo .valores li { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .6s cubic-bezier(.2, .9, .3, 1); }
+.vivo .valores li.visivel { opacity: 1; transform: none; }
+
+/* ---------- Tesoura ---------- */
+.lamina { fill: var(--champanhe); stroke: var(--fundo); stroke-width: .6; }
+.cabo-tesoura { fill: none; stroke: var(--rose); stroke-width: 3.2; stroke-linecap: round; }
+.pino-tesoura { fill: var(--fundo); stroke: var(--rose); stroke-width: 1.2; }
+
+/* ---------- Make ---------- */
+.make { max-width: 1080px; margin: 0 auto; padding-top: 88px; padding-bottom: 72px; }
+.make-apoio { margin-top: 12px; color: var(--texto-2); max-width: 26ch; }
+.make-palco { position: relative; margin: 22px -20px 0; height: min(52svh, 380px); touch-action: pan-y; }
+#po { position: absolute; inset: 0; width: 100%; height: 100%; }
+#pincel { position: absolute; left: 0; top: 0; width: 44px; height: 165px; transform-origin: 22px 0; pointer-events: none; will-change: transform; }
+.pincel-cerdas { fill: var(--fio-1); }
+.pincel-ponta { fill: var(--fio-4); opacity: .8; }
+.pincel-anel { fill: var(--rose); }
+.pincel-cabo { fill: var(--prancha); stroke: var(--rose); stroke-width: 1; }
+.potes { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; }
+.pote { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding-right: 6px; color: var(--texto-2); font-weight: 600; }
+.pote i { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--fundo-2); outline: 1.5px solid var(--linha); transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), outline-color .3s; }
+.pote[data-po="blush"] i { background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--batom) 70%, #fff), var(--batom)); }
+.pote[data-po="iluminador"] i { background: radial-gradient(circle at 35% 30%, #fff, var(--champanhe)); }
+.pote[data-po="sombra"] i { background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--sombra) 70%, #fff), var(--sombra)); }
+.pote[aria-checked="true"] { color: var(--texto); }
+.pote[aria-checked="true"] i { transform: scale(1.18); outline-color: var(--rose); outline-width: 2px; }
+.valores-make { margin-top: 30px; max-width: 300px; }
+.valores-make li { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--linha); }
+
+/* ---------- Como reservar ---------- */
+.reserva { max-width: 1080px; margin: 0 auto; padding-top: 64px; padding-bottom: 72px; }
+.passos { margin-top: 26px; display: grid; gap: 16px; counter-reset: passo; max-width: 34rem; }
+.passos li { counter-increment: passo; display: grid; grid-template-columns: 2.6rem 1fr; align-items: start; color: var(--texto-2); }
+.passos li::before { content: counter(passo); font-family: "Bodoni Moda", serif; font-weight: 600; font-variation-settings: "opsz" 18; font-size: 2rem; line-height: 1; color: var(--rose); }
+.passos strong { display: block; color: var(--texto); font-weight: 700; }
+.conta { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--linha); max-width: 34rem; }
+.conta-rotulo { font-weight: 600; }
+.conta-opcoes { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.pilula { min-height: 46px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--linha); color: var(--texto-2); font-weight: 600; font-size: .9375rem; text-align: left; transition: background-color .3s, color .3s, border-color .3s; }
+.pilula[aria-checked="true"] { background: var(--rose); border-color: var(--rose); color: var(--fundo); }
+.conta-linhas { margin: 20px 0 0; display: grid; gap: 12px; }
+.conta-linhas div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.conta-linhas dt { color: var(--texto-2); }
+.conta-linhas dd { margin: 0; font-family: "Bodoni Moda", serif; font-weight: 600; font-variation-settings: "opsz" 18; font-size: clamp(1.7rem, 7.4vw, 2.3rem); line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.conta-nota { margin-top: 14px; font-size: .875rem; color: var(--texto-2); }
+
+/* ---------- Espelho ---------- */
+.espelho-area { max-width: 1080px; margin: 0 auto; padding-top: 56px; padding-bottom: 96px; display: grid; justify-items: center; }
+.espelho { position: relative; width: min(100%, 340px); aspect-ratio: 3 / 4; }
+.vidro {
+  position: absolute; inset: 0;
+  border-radius: 50% 50% 18px 18px / 37.5% 37.5% 14px 14px;
+  border: 1.5px solid var(--rose);
+  background: linear-gradient(118deg, var(--fundo-2) 0%, color-mix(in srgb, var(--rose) 26%, var(--fundo-2)) 38%, var(--fundo-2) 52%, color-mix(in srgb, var(--champanhe) 14%, var(--fundo-2)) 78%, var(--fundo-2) 100%);
+  background-size: 260% 100%; background-position: var(--luz-vidro, 40%) 0;
+  display: grid; align-content: end; justify-items: center; gap: 12px; text-align: center;
+  padding: 0 22px 34px;
+  transition: box-shadow 1s ease;
+}
+.espelho.aceso .vidro { box-shadow: 0 0 70px -10px color-mix(in srgb, var(--champanhe) 55%, transparent), inset 0 0 40px -18px var(--champanhe); }
+.espelho-frase { font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 500; font-variation-settings: "opsz" 16; font-size: clamp(1.7rem, 7.6vw, 2.2rem); line-height: 1.08; max-width: 9ch; }
+.espelho-resumo { color: var(--texto-2); font-size: .9375rem; min-height: 1.5em; }
+.vidro .botao { padding: 0 20px; font-size: 1rem; }
+.lampadas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.lampada { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--fundo-2); border: 1.5px solid var(--rose); transition: background-color .25s, box-shadow .4s; }
+.lampada.acesa { background: #FFF6E6; border-color: var(--champanhe); box-shadow: 0 0 12px 3px color-mix(in srgb, var(--champanhe) 80%, transparent), 0 0 30px 8px color-mix(in srgb, var(--champanhe) 30%, transparent); }
+.vivo .vidro > * { opacity: 0; transform: translateY(10px); transition: opacity .7s .15s, transform .8s .15s cubic-bezier(.2, .9, .3, 1); }
+.vivo .espelho.aceso .vidro > * { opacity: 1; transform: none; }
+
+/* ---------- Recado para a profissional ---------- */
+.bilhete-area { max-width: 1080px; margin: 0 auto; padding-bottom: 64px; }
+.bilhete { padding: 26px 22px 28px; border: 1.5px dashed var(--rose); border-radius: 20px; background: var(--fundo-2); max-width: 40rem; }
+.bilhete-rotulo { font-size: .8125rem; font-weight: 600; color: var(--rose); margin-bottom: 12px; }
+.bilhete h2 { font-size: clamp(1.7rem, 7.4vw, 2.6rem); }
+.bilhete-texto { margin-top: 12px; color: var(--texto-2); }
+.bilhete-fim { margin-top: 20px; font-size: .875rem; color: var(--texto-2); }
+.molduras { margin: 14px 0 18px 2.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.moldura { aspect-ratio: 3 / 4; border: 1.5px dashed var(--linha); border-radius: 10px; display: grid; place-items: center; padding: 6px; text-align: center; font-size: .75rem; color: var(--texto-2); }
+.botao-contorno { margin-top: 18px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 22px; border-radius: 999px; border: 1.5px solid var(--rose); color: var(--rose); font-weight: 700; text-decoration: none; }
+.botao-contorno svg { width: 22px; height: 22px; }
+.bilhete-contato { margin-top: 10px; font-size: .8125rem; color: var(--texto-2); }
+
+/* ---------- Depois ---------- */
+.roteiro { margin-top: 22px; display: grid; gap: 12px; counter-reset: passo; max-width: 34rem; }
+.roteiro li { counter-increment: passo; display: grid; grid-template-columns: 2.2rem 1fr; color: var(--texto-2); }
+.roteiro li::before { content: counter(passo); font-family: "Bodoni Moda", serif; font-size: 1.4rem; line-height: 1.1; color: var(--rose); }
+.roteiro-continua { counter-reset: passo 1; margin-top: 0; }
+.roteiro strong { color: var(--texto); font-weight: 700; }
+
+/* ---------- Rodapé ---------- */
+.rodape { max-width: 1080px; margin: 0 auto; padding: 28px 20px calc(120px + env(safe-area-inset-bottom)); border-top: 1px solid var(--linha); display: grid; justify-items: center; text-align: center; }
+.aviso { font-size: .875rem; color: var(--texto-2); max-width: 44rem; }
+.assinatura { margin-top: 18px; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: .8125rem; color: var(--texto-2); text-align: center; }
+.assinatura svg { width: 26px; height: 20px; flex: none; fill: none; stroke: var(--rose); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; transition: transform .5s cubic-bezier(.3, 1.6, .5, 1); }
+.assinatura.brilhou svg { transform: translateY(-4px) rotate(-8deg) scale(1.15); fill: color-mix(in srgb, var(--champanhe) 60%, transparent); }
+
+/* ---------- Barra de ação no celular ---------- */
+.barra {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+  display: flex; justify-content: center;
+  background: linear-gradient(to top, var(--fundo) 55%, transparent);
+  transform: translateY(110%); transition: transform .5s cubic-bezier(.2, .9, .3, 1);
+  pointer-events: none;
+}
+.barra.visivel { transform: none; pointer-events: auto; }
+.barra .botao { width: min(100%, 420px); }
+.parado .barra { transition: none; }
+
+/* ---------- Telas largas ---------- */
+@media (min-width: 760px) {
+  .abertura { padding-left: 48px; padding-right: 48px; }
+  .topo { padding-left: 48px; padding-right: 48px; }
+  section { padding-left: 48px; padding-right: 48px; }
+  .momentos { grid-template-columns: 1fr 1fr; column-gap: 40px; }
+  .cabelo-palco { padding-left: 48px; padding-right: 48px; }
+  .cabelo-texto { max-width: 44%; }
+  .mecha-area { right: 6%; width: 46%; max-width: 520px; }
+  .valores { left: 48px; width: 320px; bottom: 120px; }
+  .rodape { padding-left: 48px; padding-right: 48px; }
+  .make-palco { margin-left: 0; margin-right: 0; }
+  .dica-rolar { left: 48px; }
+}
+
+/* ---------- Versão parada ---------- */
+.parado .cabelo-palco { height: auto; min-height: 640px; }
+.parado .dica-rolar, .parado .cabelo-apoio { display: none; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }

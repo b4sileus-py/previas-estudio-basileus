@@ -1,0 +1,253 @@
+<!doctype html>
+<!-- Criado por Roberto Siqueira · Estúdio Basileus | Versão 0.1 (protótipo de direção visual) -->
+<html lang="pt-BR" data-tema="noite">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Carolina Miranda · Maquiadora e cabeleireira a domicílio</title>
+  <meta name="description" content="Cabelo e make na sua casa, do fio à make. Página de demonstração, não é o site oficial da profissional.">
+  <meta name="author" content="Roberto Siqueira">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1A0F16">
+  <link rel="preload" href="fonts/bodoni-moda-variavel.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Brilho de iluminador: fica atrás de tudo e reage ao toque. -->
+  <canvas id="brilho" aria-hidden="true"></canvas>
+
+  <header class="topo">
+    <p class="faixa-demo">Página de demonstração. Não é o site oficial.</p>
+    <a class="marca" href="#abertura" aria-label="Carolina Miranda, voltar ao início">CM</a>
+    <div class="chaves">
+      <button class="chave" id="chaveTema" type="button" aria-pressed="true"><i aria-hidden="true"></i><span>Noite</span></button>
+      <button class="chave" id="chaveMov" type="button" aria-pressed="true"><i aria-hidden="true"></i><span>Movimento</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Abertura -->
+    <section class="abertura" id="abertura">
+      <svg class="fio-abertura" viewBox="0 0 400 800" preserveAspectRatio="none" aria-hidden="true">
+        <path id="fioAbertura" d="M-10 318 C 70 292, 120 352, 190 326 S 300 268, 352 318 S 392 420, 362 505 S 300 610, 330 700 S 372 770, 350 812"/>
+      </svg>
+
+      <div class="abertura-miolo">
+        <p class="oficio">Maquiadora e cabeleireira</p>
+        <h1 id="nome" aria-label="Carolina Miranda">
+          <span class="linha" aria-hidden="true">Carolina</span>
+          <span class="linha" aria-hidden="true">Miranda</span>
+        </h1>
+        <p class="frase">Realce sua beleza, do&nbsp;fio à&nbsp;make.</p>
+        <p class="apoio">Cabelo e make no mesmo atendimento. Sem trânsito, sem sala de espera.</p>
+
+        <div class="abertura-acao">
+          <a class="botao zap" id="zapTopo" href="#" target="_blank" rel="noopener">
+            <svg class="ico-zap" viewBox="0 0 24 24" aria-hidden="true"><path class="traco" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Z"/><path class="cheio" d="M9.1 7.6c-.5 3.900 3.400 7.800 7.300 7.300l.8-2-2.100-1.100-1 .9c-1-.5-1.800-1.300-2.300-2.300l.9-1-1.100-2.100Z"/></svg>
+            <span>Agendar pelo WhatsApp</span>
+          </a>
+          <p class="domicilio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="traco" d="M12 21.500s6.500-7.300 6.500-12.300a6.500 6.500 0 0 0-13 0c0 5 6.500 12.300 6.500 12.300Z"/><circle class="traco" cx="12" cy="9.200" r="2.400"/></svg>
+            No conforto da sua casa. Eu vou até você.
+          </p>
+        </div>
+      </div>
+      <p class="dica-rolar" aria-hidden="true">Role para se arrumar</p>
+    </section>
+
+    <!-- 2. Para qual momento? -->
+    <section class="momento" id="momento">
+      <h2>Qual é o seu momento?</h2>
+      <p class="momento-apoio">Toque no seu. A mensagem já sai escrita, é só enviar.</p>
+
+      <div class="momentos" role="radiogroup" aria-label="Escolha o momento">
+        <button class="pincelada" type="button" role="radio" aria-checked="false" data-momento="casamento"><span>O meu casamento</span></button>
+        <button class="pincelada" type="button" role="radio" aria-checked="false" data-momento="quinze"><span>Os meus 15 anos</span></button>
+        <button class="pincelada" type="button" role="radio" aria-checked="false" data-momento="festa"><span>Uma festa</span></button>
+        <button class="pincelada" type="button" role="radio" aria-checked="false" data-momento="porque-sim"><span>Só porque sim</span></button>
+      </div>
+
+      <div class="recado">
+        <p class="recado-rotulo">Sua mensagem</p>
+        <p class="recado-texto" id="recado" aria-live="polite"></p>
+        <a class="botao zap recado-enviar" id="zapRecado" href="#" target="_blank" rel="noopener">
+          <svg class="ico-zap" viewBox="0 0 24 24" aria-hidden="true"><path class="traco" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Z"/><path class="cheio" d="M9.1 7.6c-.5 3.900 3.400 7.800 7.300 7.300l.8-2-2.100-1.100-1 .9c-1-.5-1.800-1.300-2.300-2.300l.9-1-1.100-2.100Z"/></svg>
+          <span>Enviar no WhatsApp</span>
+        </a>
+        <p class="recado-nota">Abre o WhatsApp com a mensagem escrita. Data e horário você combina direto com a Carolina.</p>
+      </div>
+    </section>
+
+    <!-- 3. Cabelo: a prancha desce com a rolagem e alisa a mecha -->
+    <section class="cabelo" id="cabelo">
+      <div class="cabelo-palco">
+        <div class="cabelo-texto">
+          <h2>Primeiro, o fio.</h2>
+          <p class="cabelo-apoio" data-etapa="0">Role devagar. A prancha desce junto com o seu dedo.</p>
+        </div>
+
+        <div class="mecha-area">
+          <svg class="mecha" id="mecha" viewBox="0 0 300 900" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Uma mecha de cabelo ondulada que fica lisa conforme a prancha desce. No fim, uma tesoura apara as pontas.">
+            <g id="fios"></g>
+            <g id="luzes"></g>
+            <g id="prancha">
+              <path class="vapor" d="M96 -8 c -8 -14 8 -20 0 -36"/>
+              <path class="vapor v2" d="M150 -10 c 9 -16 -9 -24 0 -42"/>
+              <path class="vapor v3" d="M204 -8 c -8 -14 8 -20 0 -36"/>
+              <rect class="prancha-calor" x="62" y="14" width="176" height="5" rx="2.5"/>
+              <rect class="prancha-corpo" x="50" y="-16" width="200" height="32" rx="12"/>
+              <rect class="prancha-placa" x="62" y="-4" width="176" height="8" rx="4"/>
+              <rect class="prancha-cabo" x="244" y="-11" width="80" height="22" rx="11"/>
+              <circle class="prancha-luz" cx="262" cy="0" r="2.600"/>
+            </g>
+            <!-- A tesoura entra depois da prancha e apara as pontas -->
+            <g id="tesoura" opacity="0">
+              <g id="laminaA">
+                <path class="lamina" d="M8 -3 L-96 -1 L-96 1.5 L6 7 Z"/>
+                <path class="cabo-tesoura" d="M4 2 L34 15"/>
+                <ellipse class="cabo-tesoura" cx="47" cy="20" rx="14" ry="10"/>
+              </g>
+              <g id="laminaB">
+                <path class="lamina" d="M8 3 L-96 1 L-96 -1.5 L6 -7 Z"/>
+                <path class="cabo-tesoura" d="M4 -2 L34 -15"/>
+                <ellipse class="cabo-tesoura" cx="47" cy="-20" rx="14" ry="10"/>
+              </g>
+              <circle class="pino-tesoura" cx="0" cy="0" r="2.6"/>
+            </g>
+          </svg>
+        </div>
+
+        <ul class="valores" aria-label="Valores divulgados de cabelo">
+          <li data-mostra="1">
+            <span class="valor-nome">Progressiva</span>
+            <span class="valor-preco"><small>a partir de</small> R$ 120</span>
+          </li>
+          <li data-mostra="2">
+            <span class="valor-nome">Hidratação, escova ou prancha</span>
+            <span class="valor-preco"><small>a partir de</small> R$ 85</span>
+          </li>
+          <li class="valor-fim" data-mostra="3">
+            <span>Fio liso e pontas alinhadas. Agora vem a make.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Make: o pó esfuma no toque -->
+    <section class="make" id="make">
+      <h2>Depois, a make.</h2>
+      <p class="make-apoio">Escolha o pó e passe o dedo. Ele esfuma no seu toque.</p>
+
+      <div class="make-palco" id="makePalco">
+        <canvas id="po" aria-hidden="true"></canvas>
+        <svg id="pincel" viewBox="0 0 40 150" aria-hidden="true">
+          <path class="pincel-cerdas" d="M8 40 C1 22 12 5 20 0 C28 5 39 22 32 40 Z"/>
+          <path class="pincel-ponta" d="M12 22 C12 12 17 5 20 2 C23 5 28 12 28 22 Z"/>
+          <rect class="pincel-anel" x="8.5" y="40" width="23" height="17" rx="2"/>
+          <path class="pincel-cabo" d="M11.5 57 L28.5 57 L24.5 148 Q20 152 15.5 148 Z"/>
+        </svg>
+      </div>
+
+      <div class="potes" role="radiogroup" aria-label="Escolha o pó">
+        <button class="pote" type="button" role="radio" aria-checked="true" data-po="blush"><i aria-hidden="true"></i><span>Blush</span></button>
+        <button class="pote" type="button" role="radio" aria-checked="false" data-po="iluminador"><i aria-hidden="true"></i><span>Iluminador</span></button>
+        <button class="pote" type="button" role="radio" aria-checked="false" data-po="sombra"><i aria-hidden="true"></i><span>Sombra</span></button>
+      </div>
+
+      <ul class="valores-make" aria-label="Valor divulgado de make">
+        <li>
+          <span class="valor-nome">Make</span>
+          <span class="valor-preco"><small>a partir de</small> R$ 65</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 5. Como reservar -->
+    <section class="reserva" id="reserva">
+      <h2>Sua data, garantida.</h2>
+      <ol class="passos">
+        <li><span><strong>Chame no WhatsApp.</strong> A mensagem já vai escrita, é só enviar.</span></li>
+        <li><span><strong>Combine dia e horário.</strong> No dia marcado, eu vou até a sua casa.</span></li>
+        <li><span><strong>Garanta a data com 25%.</strong> A reserva não é devolvida se você desistir, mas desconta do total no dia.</span></li>
+      </ol>
+
+      <div class="conta">
+        <p class="conta-rotulo" id="contaRotulo">Veja a conta com o valor inicial de cada serviço</p>
+        <div class="conta-opcoes" role="radiogroup" aria-labelledby="contaRotulo">
+          <button class="pilula" type="button" role="radio" aria-checked="false" data-servico="progressiva" data-valor="120">Progressiva</button>
+          <button class="pilula" type="button" role="radio" aria-checked="false" data-servico="cabelo" data-valor="85">Hidratação, escova ou prancha</button>
+          <button class="pilula" type="button" role="radio" aria-checked="true" data-servico="make" data-valor="65">Make</button>
+        </div>
+        <dl class="conta-linhas" aria-live="polite">
+          <div><dt>Reserva de 25%</dt><dd id="contaReserva">R$ 16,25</dd></div>
+          <div><dt>No dia, a partir de</dt><dd id="contaResto">R$ 48,75</dd></div>
+        </dl>
+        <p class="conta-nota">O valor final a Carolina confirma na conversa.</p>
+      </div>
+    </section>
+
+    <!-- 6. O espelho: as luzes acendem e a cliente está pronta -->
+    <section class="espelho-area" id="espelho">
+      <div class="espelho" id="espelhoPeca">
+        <div class="lampadas" id="lampadas" aria-hidden="true"></div>
+        <div class="vidro">
+          <p class="espelho-frase">Pronta para o seu momento.</p>
+          <p class="espelho-resumo" id="resumo" aria-live="polite"></p>
+          <a class="botao zap" id="zapFim" href="#" target="_blank" rel="noopener">
+            <svg class="ico-zap" viewBox="0 0 24 24" aria-hidden="true"><path class="traco" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Z"/><path class="cheio" d="M9.1 7.6c-.5 3.900 3.400 7.800 7.300 7.300l.8-2-2.100-1.100-1 .9c-1-.5-1.800-1.300-2.300-2.300l.9-1-1.100-2.100Z"/></svg>
+            <span>Agendar pelo WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recado para a profissional: só existe na demonstração e sai da página quando ela for publicada -->
+    <section class="bilhete-area" id="bilhete">
+      <div class="bilhete">
+        <p class="bilhete-rotulo">Recado para a Carolina, só nesta demonstração</p>
+        <h2>Carolina, esta página foi feita para você.</h2>
+        <p class="bilhete-texto">Tudo o que a sua cliente viu até aqui saiu do que você já divulga. Com o seu material, a página fica completa:</p>
+        <ol class="roteiro">
+          <li><span><strong>As suas fotos.</strong> Seis a nove fotos dos seus trabalhos, do seu celular mesmo. Elas entram aqui:</span></li>
+        </ol>
+        <div class="molduras" aria-hidden="true">
+          <div class="moldura"><span>Sua foto aqui</span></div>
+          <div class="moldura"><span>Sua foto aqui</span></div>
+          <div class="moldura"><span>Sua foto aqui</span></div>
+        </div>
+        <ol class="roteiro roteiro-continua" start="2">
+          <li><span><strong>Os seus valores de hoje.</strong> Preços atualizados e os serviços que não couberam na sua arte.</span></li>
+          <li><span><strong>Onde você atende.</strong> Os bairros ou cidades aonde você vai, para a cliente saber antes de chamar.</span></li>
+        </ol>
+        <p class="bilhete-fim">Quando a página for ao ar, este recado sai e fica só o que é para a sua cliente.</p>
+        <a class="botao-contorno" href="https://wa.me/5521959009892?text=Oi%2C%20Roberto!%20Vi%20a%20p%C3%A1gina%20de%20demonstra%C3%A7%C3%A3o%20e%20quero%20conversar." target="_blank" rel="noopener">
+          <svg class="ico-zap" viewBox="0 0 24 24" aria-hidden="true"><path class="traco" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Z"/><path class="cheio" d="M9.1 7.6c-.5 3.900 3.400 7.800 7.300 7.300l.8-2-2.100-1.100-1 .9c-1-.5-1.800-1.300-2.300-2.300l.9-1-1.100-2.100Z"/></svg>
+          <span>Falar com o Roberto</span>
+        </a>
+        <p class="bilhete-contato">Roberto Siqueira, Estúdio Basileus · WhatsApp (21) 95900-9892</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p class="aviso">Página de demonstração criada pelo Estúdio Basileus. Não é o site oficial da profissional. Valores conforme a divulgação dela, sujeitos a confirmação.</p>
+    <button class="assinatura" id="assinatura" type="button" aria-label="Criado por Roberto Siqueira, Estúdio Basileus. Toque para ver o brilho.">
+      <svg viewBox="0 0 32 24" aria-hidden="true"><path d="M3 20 L1.500 6.500 L9.500 12.500 L16 3 L22.500 12.500 L30.500 6.500 L29 20 Z" /><path d="M4 22.500 H28" /></svg>
+      <span>Criado por Roberto Siqueira · Estúdio Basileus · v0.1</span>
+    </button>
+  </footer>
+
+  <!-- A ação fica sempre perto do polegar depois da abertura -->
+  <div class="barra" id="barra" aria-hidden="true">
+    <a class="botao zap" id="zapBarra" href="#" target="_blank" rel="noopener" tabindex="-1">
+      <svg class="ico-zap" viewBox="0 0 24 24" aria-hidden="true"><path class="traco" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Z"/><path class="cheio" d="M9.1 7.6c-.5 3.900 3.400 7.800 7.300 7.300l.8-2-2.100-1.100-1 .9c-1-.5-1.800-1.300-2.300-2.300l.9-1-1.100-2.100Z"/></svg>
+      <span>Agendar pelo WhatsApp</span>
+    </a>
+  </div>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
