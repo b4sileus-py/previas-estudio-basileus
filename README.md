@@ -7,6 +7,7 @@ Páginas de demonstração criadas pelo **Estúdio Basileus** e publicadas pelo 
 | Prévia | Negócio | Abrir |
 |---|---|---|
 | [Carolina Miranda](carolina-miranda/) | Maquiadora e cabeleireira a domicílio | **[Ver a página](https://b4sileus-py.github.io/previas-estudio-basileus/carolina-miranda/)** |
+| [Escola Designer de Unhas](escola-designer-unhas/) | Página de afiliado de curso online (portfólio) | **[Ver a página](https://b4sileus-py.github.io/previas-estudio-basileus/escola-designer-unhas/)** |
 
 > 📱 As páginas são pensadas primeiro para o celular. Abra o link no seu aparelho para ver como a cliente vê.
 
@@ -22,6 +23,13 @@ Páginas de demonstração criadas pelo **Estúdio Basileus** e publicadas pelo 
 - Cada página usa somente informações que o próprio negócio já divulgou publicamente. Nada é inventado: sem depoimentos, avaliações ou fotos de terceiros.
 - As páginas ficam fora dos buscadores e levam um aviso de demonstração no topo.
 - Uma página só vira site oficial depois da conversa com o negócio e da autorização dele.
+
+### 🧪 Páginas de portfólio
+
+Algumas páginas são **experimentos do próprio estúdio**, publicados como portfólio, e não demonstrações para um negócio.
+Elas dizem isso no topo e no rodapé e também ficam fora dos buscadores. A página de afiliado de unhas usa o material de
+divulgação que o produtor do curso fornece aos afiliados (preço, fotos de unhas e comentários de alunas, sem rostos e
+com nomes abreviados como no original).
 
 ## 🛠️ Tecnologias
 

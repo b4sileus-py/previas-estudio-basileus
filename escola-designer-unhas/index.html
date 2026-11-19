@@ -1,0 +1,591 @@
+<!doctype html>
+<!-- Criado por Roberto Siqueira · Estúdio Basileus | Versão 0.1 (protótipo de direção visual) -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Escola Designer de Unhas · Curso de alongamento e nail art</title>
+  <meta name="description" content="Curso online de alongamento de unhas e nail art, do zero ao avançado, com 2 certificados. Página demonstrativa de afiliado.">
+  <meta name="author" content="Roberto Siqueira">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#380022">
+  <link rel="preload" href="fonts/montserrat-variavel.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-italica-variavel.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Purpurina: fica atrás de tudo, flutua, escorre com a rolagem e segue o dedo ou o mouse -->
+  <canvas id="purpurina" aria-hidden="true" hidden></canvas>
+  <header class="topo">
+    <p class="faixa-demo">Página demonstrativa de afiliado</p>
+    <div class="topo-linha">
+      <a class="marca" href="#abertura" aria-label="Escola Designer de Unhas, voltar ao início">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="marca-aro" cx="32" cy="32" r="29"/>
+          <g transform="translate(32 34) rotate(-14) scale(.26) translate(-55 -82)">
+            <path class="marca-unha" d="M55 2 C88 2 104 52 104 98 L104 148 Q104 164 88 164 L22 164 Q6 164 6 148 L6 98 C6 52 22 2 55 2 Z"/>
+            <path class="marca-ponta" d="M10 70 C30 54 80 54 100 70 C94 34 78 2 55 2 C32 2 16 34 10 70 Z"/>
+          </g>
+        </svg>
+        <span><small>Escola</small> Designer <small>de unhas</small></span>
+      </a>
+      <button class="chave" id="chaveMov" type="button" aria-pressed="true">
+        <i aria-hidden="true"></i><span>Movimento</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Abertura -->
+    <section class="abertura" id="abertura" aria-labelledby="titulo">
+      <!-- foto inteira de fundo; se funde ao vinho onde está o texto -->
+      <div class="abertura-fundo">
+        <img src="img/encapsulada-flor-seca.webp" width="900" height="1125" fetchpriority="high"
+             alt="Unhas quadradas com glitter e uma unha encapsulada com flor seca azul e branca">
+        <p class="abertura-legenda">Encapsulada com flor seca, uma das técnicas do curso</p>
+      </div>
+
+      <div class="abertura-texto">
+        <p class="sobretitulo">Curso online de alongamento e nail art</p>
+        <h1 id="titulo">
+          <span class="linha">Seja sua</span>
+          <span class="linha">própria <em>chefe.</em></span>
+        </h1>
+        <p class="apoio">34 videoaulas, do zero ao avançado, 2 certificados e acesso para sempre.</p>
+
+        <div class="preco" aria-label="De 297 reais por 79 reais e 90 centavos à vista, ou 8 vezes de 11 reais e 14 centavos">
+          <p class="preco-de">de <s>R$ 297</s> por</p>
+          <p class="preco-por"><span class="moeda">R$</span>79,90</p>
+          <p class="preco-parcela">à vista ou 8x de R$ 11,14</p>
+        </div>
+
+        <div class="acoes">
+          <button class="botao botao-compra" type="button" data-checkout>Quero me inscrever</button>
+          <p class="garantia">7 dias de garantia · acesso imediato</p>
+        </div>
+      </div>
+
+
+    </section>
+
+    <!-- 2. Momento marcante: a visitante monta a própria unha, com as técnicas do curso -->
+    <section class="estudio" id="estudio" aria-labelledby="titulo-estudio">
+      <div class="estudio-miolo">
+        <div class="estudio-cabeca">
+          <p class="sobretitulo">Experimente antes de aprender</p>
+          <h2 id="titulo-estudio">Monte a sua <em>primeira unha.</em></h2>
+        </div>
+
+        <div class="estudio-palco">
+          <svg class="desenho" id="desenho" viewBox="0 0 300 440" role="img" aria-labelledby="desenho-desc">
+            <desc id="desenho-desc">Unha amendoada esmaltada em gel rosa, sem desenho.</desc>
+            <defs>
+              <clipPath id="recorteUnha"><path class="forma-unha" d="M150 60 C186 60 204 124 204 176 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 176 C96 124 114 60 150 60 Z"/></clipPath>
+              <linearGradient id="brilhoGel" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" class="gel-luz"/>
+                <stop offset=".45" class="gel-luz-fim"/>
+              </linearGradient>
+              <radialGradient id="luzLed" cx=".5" cy=".25" r=".7">
+                <stop offset="0" class="luz-a"/>
+                <stop offset="1" class="luz-b"/>
+              </radialGradient>
+              <g id="flor">
+                <circle cx="0" cy="-7" r="5.5"/><circle cx="6.7" cy="-2.2" r="5.5"/><circle cx="4.1" cy="5.7" r="5.5"/>
+                <circle cx="-4.1" cy="5.7" r="5.5"/><circle cx="-6.7" cy="-2.2" r="5.5"/>
+                <circle class="miolo-flor" cx="0" cy="0" r="3.4"/>
+              </g>
+              <path id="coracao" d="M0 4 C0 -2 -9 -3 -9 4 C-9 9 -2 13 0 16 C2 13 9 9 9 4 C9 -3 0 -2 0 4 Z"/>
+              <path id="folha" d="M0 0 C6 -6 14 -6 18 0 C14 6 6 6 0 0 Z"/>
+            </defs>
+
+            <path class="dedo" d="M64 440 L64 270 C64 196 104 168 150 168 C196 168 236 196 236 270 L236 440 Z"/>
+            <path class="dedo-sombra" d="M200 196 C226 214 236 240 236 270 L236 440 L212 440 L212 270 C212 240 208 214 200 196 Z"/>
+            <path class="cuticula" d="M100 300 Q150 318 200 300"/>
+
+            <g id="unha">
+              <path class="forma-unha unha-base" d="M150 60 C186 60 204 124 204 176 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 176 C96 124 114 60 150 60 Z"/>
+              <g clip-path="url(#recorteUnha)">
+                <rect id="gelAtual" class="gel" x="80" y="20" width="140" height="290"/>
+                <rect id="gelNovo" class="gel" x="80" y="302" width="140" height="0"/>
+                <path id="ponta" class="ponta" d="M80 124 C120 100 180 100 220 124 L220 20 L80 20 Z"/>
+                <g id="glitter" class="glitter"></g>
+                <g id="carimbos" class="tinta">
+                  <g class="estampa" data-carimbo="flores">
+                    <use href="#flor" transform="translate(126 112) scale(1.05)"/>
+                    <use href="#flor" transform="translate(176 160) scale(.8)"/>
+                    <use href="#flor" transform="translate(134 214) scale(1.2)"/>
+                    <use href="#flor" transform="translate(180 254) scale(.75)"/>
+                    <use href="#flor" transform="translate(114 270) scale(.6)"/>
+                  </g>
+                  <g class="estampa" data-carimbo="coracoes">
+                    <use href="#coracao" transform="translate(130 100) rotate(-12) scale(.9)"/>
+                    <use href="#coracao" transform="translate(172 146) rotate(14) scale(1.1)"/>
+                    <use href="#coracao" transform="translate(124 192) rotate(-6) scale(1.3)"/>
+                    <use href="#coracao" transform="translate(176 232) rotate(10) scale(.8)"/>
+                    <use href="#coracao" transform="translate(140 268) rotate(-16) scale(.7)"/>
+                  </g>
+                  <g class="estampa" data-carimbo="folhagem">
+                    <path class="ramo" d="M112 300 C140 250 108 210 146 170 C178 136 150 104 176 64"/>
+                    <use href="#folha" transform="translate(126 262) rotate(-150)"/>
+                    <use href="#folha" transform="translate(128 236) rotate(-20)"/>
+                    <use href="#folha" transform="translate(140 186) rotate(-160)"/>
+                    <use href="#folha" transform="translate(152 168) rotate(-30)"/>
+                    <use href="#folha" transform="translate(162 120) rotate(-170)"/>
+                    <use href="#folha" transform="translate(166 100) rotate(-40)"/>
+                  </g>
+                </g>
+                <rect class="gel-reflexo" x="80" y="20" width="140" height="290" fill="url(#brilhoGel)"/>
+                <rect id="reflexo" class="reflexo" x="120" y="0" width="22" height="330" transform="skewX(-12)"/>
+              </g>
+              <path class="forma-unha unha-contorno-fino" d="M150 60 C186 60 204 124 204 176 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 176 C96 124 114 60 150 60 Z"/>
+            </g>
+
+            <!-- lixa: passa pela ponta quando o formato muda -->
+            <g id="lixa" class="lixa">
+              <rect x="-70" y="-9" width="140" height="18" rx="9"/>
+              <rect class="lixa-grao" x="-62" y="-5" width="124" height="10" rx="5"/>
+            </g>
+            <g id="po" class="po"></g>
+
+            <!-- carimbo: desce, aperta e deixa o desenho -->
+            <g id="carimbo" class="carimbo">
+              <rect class="carimbo-cabo" x="-16" y="-120" width="32" height="96" rx="12"/>
+              <rect class="carimbo-anel" x="-26" y="-30" width="52" height="14" rx="4"/>
+              <ellipse id="carimboCabeca" class="carimbo-cabeca" cx="0" cy="-8" rx="34" ry="14"/>
+            </g>
+
+            <!-- cabine de LED -->
+            <g id="cabine" class="cabine">
+              <ellipse class="cabine-luz" cx="150" cy="120" rx="118" ry="96"/>
+              <path class="cabine-cupula" d="M16 168 C16 28 284 28 284 168 L258 168 C258 62 42 62 42 168 Z"/>
+              <g class="cabine-leds">
+                <circle cx="70" cy="86" r="4"/><circle cx="104" cy="66" r="4"/><circle cx="150" cy="59" r="4"/>
+                <circle cx="196" cy="66" r="4"/><circle cx="230" cy="86" r="4"/>
+              </g>
+            </g>
+
+            <path id="brilho" class="brilho" d="M240 60 c2 -14 4 -16 18 -18 c-14 -2 -16 -4 -18 -18 c-2 14 -4 16 -18 18 c14 2 16 4 18 18 Z"/>
+          </svg>
+        </div>
+
+        <div class="estudio-painel">
+          <div class="abas" role="tablist" aria-label="Etapas da unha">
+            <button class="aba" type="button" role="tab" id="aba-formato" aria-controls="painel-formato" aria-selected="true">Formato</button>
+            <button class="aba" type="button" role="tab" id="aba-cor" aria-controls="painel-cor" aria-selected="false" tabindex="-1">Cor</button>
+            <button class="aba" type="button" role="tab" id="aba-acabamento" aria-controls="painel-acabamento" aria-selected="false" tabindex="-1">Acabamento</button>
+            <button class="aba" type="button" role="tab" id="aba-carimbo" aria-controls="painel-carimbo" aria-selected="false" tabindex="-1">Carimbo</button>
+          </div>
+
+          <div class="painel" role="tabpanel" id="painel-formato" aria-labelledby="aba-formato">
+            <div class="opcoes" data-grupo="formato">
+              <button class="opcao" type="button" data-valor="quadrado" aria-pressed="false"><svg viewBox="80 20 140 300" aria-hidden="true"><path class="mini-forma" d="M112 64 L188 64 Q204 64 204 80 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 80 Q96 64 112 64 Z"/></svg>Quadrado</button>
+              <button class="opcao" type="button" data-valor="squoval" aria-pressed="false"><svg viewBox="80 20 140 300" aria-hidden="true"><path class="mini-forma" d="M128 62 L172 62 C196 62 204 76 204 100 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 100 C96 76 104 62 128 62 Z"/></svg>Squoval</button>
+              <button class="opcao" type="button" data-valor="almond" aria-pressed="true"><svg viewBox="80 20 140 300" aria-hidden="true"><path class="mini-forma" d="M150 60 C186 60 204 124 204 176 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 176 C96 124 114 60 150 60 Z"/></svg>Almond</button>
+              <button class="opcao" type="button" data-valor="bailarina" aria-pressed="false"><svg viewBox="80 20 140 300" aria-hidden="true"><path class="mini-forma" d="M130 56 L170 56 Q178 56 180 64 L204 178 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 178 L120 64 Q122 56 130 56 Z"/></svg>Bailarina</button>
+              <button class="opcao" type="button" data-valor="stiletto" aria-pressed="false"><svg viewBox="80 20 140 300" aria-hidden="true"><path class="mini-forma" d="M150 30 C164 84 204 150 204 200 L204 282 Q204 302 184 302 L116 302 Q96 302 96 282 L96 200 C96 150 136 84 150 30 Z"/></svg>Stiletto</button>
+            </div>
+          </div>
+          <div class="painel" role="tabpanel" id="painel-cor" aria-labelledby="aba-cor" hidden>
+            <div class="opcoes" data-grupo="cor">
+              <button class="opcao" type="button" data-valor="rosa" aria-pressed="true"><i class="amostra amostra-rosa"></i>Rosa</button>
+              <button class="opcao" type="button" data-valor="nude" aria-pressed="false"><i class="amostra amostra-nude"></i>Nude</button>
+              <button class="opcao" type="button" data-valor="vermelho" aria-pressed="false"><i class="amostra amostra-vermelho"></i>Vermelho</button>
+              <button class="opcao" type="button" data-valor="vinho" aria-pressed="false"><i class="amostra amostra-vinho"></i>Vinho</button>
+              <button class="opcao" type="button" data-valor="lilas" aria-pressed="false"><i class="amostra amostra-lilas"></i>Lilás</button>
+              <button class="opcao" type="button" data-valor="leitoso" aria-pressed="false"><i class="amostra amostra-leitoso"></i>Leitoso</button>
+            </div>
+          </div>
+          <div class="painel" role="tabpanel" id="painel-acabamento" aria-labelledby="aba-acabamento" hidden>
+            <div class="opcoes" data-grupo="acabamento">
+              <button class="opcao" type="button" data-valor="liso" aria-pressed="true"><svg viewBox="0 0 40 60" aria-hidden="true"><path class="mini-unha" d="M20 3 C33 3 37 20 37 30 L37 54 Q37 58 33 58 L7 58 Q3 58 3 54 L3 30 C3 20 7 3 20 3 Z"/></svg>Liso</button>
+              <button class="opcao" type="button" data-valor="francesinha" aria-pressed="false"><svg viewBox="0 0 40 60" aria-hidden="true"><path class="mini-unha" d="M20 3 C33 3 37 20 37 30 L37 54 Q37 58 33 58 L7 58 Q3 58 3 54 L3 30 C3 20 7 3 20 3 Z"/><path class="mini-ponta" d="M5 20 C14 14 26 14 35 20 C32 9 27 3 20 3 C13 3 8 9 5 20 Z"/></svg>Francesinha</button>
+              <button class="opcao" type="button" data-valor="glitter" aria-pressed="false"><svg viewBox="0 0 40 60" aria-hidden="true"><path class="mini-unha" d="M20 3 C33 3 37 20 37 30 L37 54 Q37 58 33 58 L7 58 Q3 58 3 54 L3 30 C3 20 7 3 20 3 Z"/><g class="mini-glitter"><circle cx="14" cy="16" r="1.6"/><circle cx="24" cy="12" r="1.2"/><circle cx="28" cy="24" r="1.7"/><circle cx="12" cy="30" r="1.3"/><circle cx="22" cy="34" r="1.8"/><circle cx="30" cy="42" r="1.2"/><circle cx="15" cy="46" r="1.6"/><circle cx="24" cy="50" r="1.1"/></g></svg>Glitter</button>
+            </div>
+          </div>
+          <div class="painel" role="tabpanel" id="painel-carimbo" aria-labelledby="aba-carimbo" hidden>
+            <div class="opcoes" data-grupo="carimbo">
+              <button class="opcao" type="button" data-valor="nenhum" aria-pressed="true"><svg viewBox="-20 -20 40 40" aria-hidden="true"><circle class="mini-vazio" r="13"/></svg>Sem</button>
+              <button class="opcao" type="button" data-valor="flores" aria-pressed="false"><svg viewBox="-20 -20 40 40" aria-hidden="true"><use class="mini-tinta" href="#flor" transform="scale(1.6)"/></svg>Flores</button>
+              <button class="opcao" type="button" data-valor="coracoes" aria-pressed="false"><svg viewBox="-20 -20 40 40" aria-hidden="true"><use class="mini-tinta" href="#coracao" transform="translate(0 -9) scale(1.6)"/></svg>Corações</button>
+              <button class="opcao" type="button" data-valor="folhagem" aria-pressed="false"><svg viewBox="-20 -20 40 40" aria-hidden="true"><g class="mini-tinta"><use href="#folha" transform="translate(-14 6) rotate(-35) scale(1.3)"/><use href="#folha" transform="translate(-2 -2) rotate(-35) scale(1.3)"/></g></svg>Folhagem</button>
+            </div>
+          </div>
+
+          <div class="estudio-fim">
+            <button class="botao botao-finalizar" type="button" id="finalizar">
+              <span class="leds" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="finalizar-texto" id="finalizarTexto">Finalizar na cabine de LED</span>
+            </button>
+            <div class="resultado" id="resultado" aria-live="polite" hidden>
+              <p class="resultado-titulo">Pronta! Sua unha usou <strong id="resultadoQtd">3 técnicas</strong> que estão no curso:</p>
+              <ul class="resultado-lista" id="resultadoLista"></ul>
+              <button class="botao botao-compra" type="button" data-checkout>Quero aprender de verdade</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Técnicas: galeria em leque (coverflow) feita para esta página -->
+    <section class="tecnicas" id="tecnicas" aria-labelledby="titulo-tecnicas">
+      <div class="tecnicas-cabeca">
+        <p class="sobretitulo">Fotos reais do material do curso</p>
+        <h2 id="titulo-tecnicas">Técnicas que você <em>vai dominar.</em></h2>
+      </div>
+      <div class="galeria" id="galeria" role="region" aria-roledescription="carrossel" aria-label="Técnicas do curso em fotos">
+        <ul class="galeria-trilho" id="galeriaTrilho">
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/babyboomer.webp" width="440" height="680" loading="lazy" alt="Unhas quadradas em babyboomer, do rosado ao branco, com pedrinhas"></div>
+            <p class="galeria-nome">Babyboomer</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/esmaltacao-em-gel.webp" width="440" height="680" loading="lazy" alt="Unhas quadradas esmaltadas em gel rosa-choque"></div>
+            <p class="galeria-nome">Esmaltação em gel</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/formato-almond.webp" width="440" height="680" loading="lazy" alt="Unhas amendoadas com degradê amarelo"></div>
+            <p class="galeria-nome">Formato almond</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/francesinha-reta.webp" width="440" height="680" loading="lazy" alt="Unhas quadradas com francesinha branca reta"></div>
+            <p class="galeria-nome">Francesinha reta</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/gel-moldado.webp" width="440" height="680" loading="lazy" alt="Alongamento em gel sendo feito sobre o molde de papel"></div>
+            <p class="galeria-nome">Gel moldado</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/encapsulada-adesivo.webp" width="440" height="680" loading="lazy" alt="Unhas rosadas com flor encapsulada"></div>
+            <p class="galeria-nome">Encapsulada com adesivo</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/formato-stiletto.webp" width="440" height="680" loading="lazy" alt="Unhas stiletto vermelhas"></div>
+            <p class="galeria-nome">Formato stiletto</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/alongamento-natural.webp" width="440" height="680" loading="lazy" alt="Unhas alongadas com acabamento natural"></div>
+            <p class="galeria-nome">Alongamento natural</p>
+          </li>
+          <li class="galeria-item">
+            <div class="galeria-foto"><img src="img/curvatura-em-c.webp" width="440" height="680" loading="lazy" alt="Unhas quadradas vistas de perfil, mostrando a curvatura em C"></div>
+            <p class="galeria-nome">Curvatura em C</p>
+          </li>
+        </ul>
+        <div class="galeria-controles">
+          <button class="galeria-seta" type="button" id="galeriaAnterior" aria-label="Foto anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+          </button>
+          <p class="galeria-contador" aria-live="polite"><span id="galeriaAtual">1</span> / 9<span class="sr" id="galeriaNomeAtual">: Babyboomer</span></p>
+          <button class="galeria-seta" type="button" id="galeriaProxima" aria-label="Próxima foto">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- 3b. Uma vez, para sempre: para você e para o seu negócio -->
+    <section class="umavez" id="umavez" aria-labelledby="titulo-umavez">
+      <div class="bloco">
+        <div class="cabeca">
+          <p class="sobretitulo">Paga uma vez, usa para sempre</p>
+          <h2 id="titulo-umavez">No salão, você paga <em>toda vez.</em></h2>
+        </div>
+
+        <div class="umavez-lados">
+          <article class="lado" data-revela>
+            <p class="lado-rotulo">Para você</p>
+            <div class="controle">
+              <label for="gastoSalao">Quanto você gasta no salão por mês</label>
+              <output id="gastoSaida" for="gastoSalao">R$ 60</output>
+              <input type="range" id="gastoSalao" min="30" max="300" step="10" value="60" aria-valuetext="60 reais por mês">
+            </div>
+            <ol class="meses" id="meses" aria-hidden="true">
+              <li class="mes"><span class="mes-nome">jan</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">fev</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">mar</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">abr</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">mai</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">jun</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">jul</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">ago</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">set</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">out</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">nov</span><span class="mes-valor">R$ 60</span></li>
+              <li class="mes"><span class="mes-nome">dez</span><span class="mes-valor">R$ 60</span></li>
+            </ol>
+            <div class="comparacao" aria-live="polite">
+              <p><span class="comparacao-rotulo">Salão em 1 ano</span><strong id="gastoAno">R$ 720</strong></p>
+              <p><span class="comparacao-rotulo">Curso, uma vez só</span><strong class="destaque">R$ 79,90</strong></p>
+            </div>
+            <p class="lado-texto" id="gastoFrase">O curso custa menos que 2 meses de salão. Depois, as suas unhas são feitas por você, para sempre.</p>
+            <p class="aviso">Valor de exemplo; ajuste para o que você gasta hoje.</p>
+          </article>
+
+          <article class="lado" data-revela>
+            <p class="lado-rotulo">Para o seu negócio</p>
+            <svg class="voltas" viewBox="0 0 220 120" aria-hidden="true">
+              <path class="voltas-caminho" d="M30 60 C30 20 90 20 110 60 C130 100 190 100 190 60 C190 20 130 20 110 60 C90 100 30 100 30 60 Z"/>
+              <circle class="voltas-cliente" r="9" cx="30" cy="60"/>
+            </svg>
+            <h3>A mesma cliente volta.</h3>
+            <p class="lado-texto">O alongamento pede manutenção, e o curso tem um módulo inteiro só para ela (módulo 5). A cliente que você atende hoje volta para manter as unhas, e cada volta é um novo atendimento. É um serviço que se repete.</p>
+            <a class="lado-link" href="#ganhos">Simule a sua agenda <span aria-hidden="true">↓</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Quanto você pode ganhar: a agenda do mês vai enchendo (simulação, não promessa) -->
+    <section class="ganhos" id="ganhos" aria-labelledby="titulo-ganhos">
+      <div class="ganhos-miolo">
+        <div class="ganhos-cabeca">
+          <p class="sobretitulo">Simulação</p>
+          <h2 id="titulo-ganhos">Imagine a sua <em>agenda cheia.</em></h2>
+        </div>
+
+        <div class="ganhos-controles">
+          <div class="controle">
+            <label for="clientesDia">Clientes por dia</label>
+            <output id="clientesSaida" for="clientesDia">1</output>
+            <input type="range" id="clientesDia" min="1" max="10" step="1" value="1" aria-valuetext="1 cliente por dia">
+          </div>
+          <div class="controle">
+            <label for="valorAtendimento">Valor do atendimento</label>
+            <output id="valorSaida" for="valorAtendimento">R$ 60</output>
+            <input type="range" id="valorAtendimento" min="30" max="150" step="5" value="60" aria-valuetext="60 reais">
+          </div>
+        </div>
+
+        <div class="agenda" aria-hidden="true">
+          <div class="agenda-semana"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span></div>
+          <div class="agenda-dias" id="agendaDias"></div>
+        </div>
+
+        <div class="ganhos-total" aria-live="polite">
+          <p class="ganhos-conta" id="ganhosConta">1 cliente × R$ 60 × 22 dias úteis</p>
+          <p class="ganhos-valor"><span id="ganhosValor">R$ 1.320</span><small> por mês</small></p>
+          <p class="ganhos-paga" id="ganhosPaga">Com 2 atendimentos, o curso já se pagou.</p>
+        </div>
+
+        <p class="aviso">Simulação ilustrativa, com valores de exemplo. O resultado depende de você, da sua região e da sua
+          dedicação. Não é promessa de renda.</p>
+      </div>
+    </section>
+    <!-- 5. Comentários das alunas: duas faixas que correm em sentidos opostos e param para ler -->
+    <section class="comentarios" id="comentarios" aria-labelledby="titulo-comentarios">
+      <div class="comentarios-cabeca">
+        <p class="sobretitulo">Comentários de alunas</p>
+        <h2 id="titulo-comentarios">Quem fez, <em>aprovou.</em></h2>
+        <p class="comentarios-nota">Comentários publicados por alunas na área do curso, do material de divulgação do produtor. Nomes abreviados como no original.</p>
+      </div>
+      <div class="faixas">
+        <div class="faixa" data-sentido="esquerda">
+          <ul class="faixa-trilho">
+            <li class="comentario">
+              <span class="gota gota-rosa" aria-hidden="true">A</span>
+              <div>
+                <p class="comentario-texto">Amei ! Essa professora é top! Ensina de uma forma, que vc consegue entender muito bem, oque ela quer passar pro aluno!</p>
+                <p class="comentario-autor"><strong>Ana C.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+            <li class="comentario">
+              <span class="gota gota-lilas" aria-hidden="true">T</span>
+              <div>
+                <p class="comentario-texto">Amei, explica muito bem<br>Nos transmite muita segurança :)</p>
+                <p class="comentario-autor"><strong>Thalia S.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+            <li class="comentario">
+              <span class="gota gota-vermelho" aria-hidden="true">H</span>
+              <div>
+                <p class="comentario-texto">Adorei o curso!!!<br>Bem explicado. Tirei tds minhas dúvidas.<br>Vc é show!!!</p>
+                <p class="comentario-autor"><strong>Hozana S.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+            <li class="comentario">
+              <span class="gota gota-nude" aria-hidden="true">C</span>
+              <div>
+                <p class="comentario-texto">Obrigada vc pela dica,super te indico ,ja fiz uma fibrz com suas técnicas e ficaram otimas .</p>
+                <p class="comentario-autor"><strong>Cibele L.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="faixa" data-sentido="direita">
+          <ul class="faixa-trilho">
+            <li class="comentario">
+              <span class="gota gota-vinho" aria-hidden="true">F</span>
+              <div>
+                <p class="comentario-texto">eu amei aprendi muito com esse curso online maravilhoso</p>
+                <p class="comentario-autor"><strong>Fabricia o.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+            <li class="comentario">
+              <span class="gota gota-leitoso" aria-hidden="true">R</span>
+              <div>
+                <p class="comentario-texto">Até aqui Tô adorando, muito bem explicada, valeu muito obg.</p>
+                <p class="comentario-autor"><strong>Rosângela L.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+            <li class="comentario">
+              <span class="gota gota-rosa" aria-hidden="true">R</span>
+              <div>
+                <p class="comentario-texto">Amei ,vc explica muito bem!<br>Quero aprender bastante com vc!</p>
+                <p class="comentario-autor"><strong>Raquel E.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+            <li class="comentario">
+              <span class="gota gota-lilas" aria-hidden="true">C</span>
+              <div>
+                <p class="comentario-texto">Amei perfeito</p>
+                <p class="comentario-autor"><strong>Cristina L.</strong> · <time datetime="2020">2020</time></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- 6. O que você recebe -->
+    <section class="recebe" id="recebe" aria-labelledby="titulo-recebe">
+      <div class="bloco">
+        <div class="cabeca">
+          <p class="sobretitulo">O que você recebe</p>
+          <h2 id="titulo-recebe">Tudo para sair do zero <em>com certificado.</em></h2>
+        </div>
+        <ul class="itens">
+          <li class="item" data-revela>
+            <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="28" rx="6"/><path class="cheio" d="M21 17 L31 23 L21 29 Z"/><path d="M14 42 H34"/></svg>
+            <div><h3>34 videoaulas</h3><p>13 módulos, do básico ao avançado, com passo a passo simples e didático.</p></div>
+          </li>
+          <li class="item" data-revela>
+            <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="7" width="36" height="26" rx="3"/><path d="M13 15 H35 M13 21 H27"/><circle cx="33" cy="33" r="7"/><path d="M29 39 L27 46 L33 43 L39 46 L37 39"/></svg>
+            <div><h3>2 certificados</h3><p>Alongamento de Unhas e Nail Art em Alongamento, 8 horas cada, gerados na área da aluna.</p></div>
+          </li>
+          <li class="item" data-revela>
+            <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 17 C8 17 8 31 16 31 C22 31 26 17 32 17 C40 17 40 31 32 31 C26 31 22 17 16 17 Z"/></svg>
+            <div><h3>Acesso imediato e vitalício</h3><p>Estude quando e onde quiser, pelo computador, tablet ou celular.</p></div>
+          </li>
+          <li class="item" data-revela>
+            <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 C33 6 37 18 37 26 L37 40 Q37 43 34 43 L14 43 Q11 43 11 40 L11 26 C11 18 15 6 24 6 Z"/><path class="cheio" d="M13 19 C19 15 29 15 35 19 C33 11 29 6 24 6 C19 6 15 11 13 19 Z"/></svg>
+            <div><h3>Técnicas do básico ao avançado</h3><p>Fibra de vidro, gel moldado, gel na tips, polygel, francesinhas, encapsuladas, carimbo e muito mais.</p></div>
+          </li>
+        </ul>
+
+        <div class="bonus">
+          <p class="bonus-titulo" data-revela><span>+3</span> bônus para quem se inscrever</p>
+          <ul class="bonus-lista">
+            <li class="bonus-item" data-revela>
+              <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="8" width="28" height="34" rx="3"/><rect x="18" y="5" width="12" height="7" rx="2"/><path d="M16 20 H32 M16 27 H32 M16 34 H26"/></svg>
+              <div><p class="bonus-num">Bônus 1</p><h3>Ficha de anamnese</h3><p>Modelo para atender suas clientes.</p></div>
+            </li>
+            <li class="bonus-item" data-revela>
+              <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><path d="M9 12 H13 M9 24 H13 M9 36 H13 M19 12 H39 M19 24 H39 M19 36 H33"/></svg>
+              <div><p class="bonus-num">Bônus 2</p><h3>Lista de fornecedores</h3><p>Onde comprar os materiais.</p></div>
+            </li>
+            <li class="bonus-item" data-revela>
+              <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 12 C18 8 11 8 6 10 V38 C11 36 18 36 24 40 C30 36 37 36 42 38 V10 C37 8 30 8 24 12 Z M24 12 V40"/></svg>
+              <div><p class="bonus-num">Bônus 3</p><h3>E-book de acrigel</h3><p>A técnica de alongamento em acrigel, completa.</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Preço: ancoragem, economia e garantia -->
+    <section class="oferta" id="oferta" aria-labelledby="titulo-oferta">
+      <div class="bloco oferta-miolo">
+        <p class="sobretitulo">Valor promocional por tempo limitado</p>
+        <h2 id="titulo-oferta" class="sr">Preço do curso</h2>
+        <div class="ancora" aria-label="De 297 reais por 79 reais e 90 centavos à vista, ou 8 vezes de 11 reais e 14 centavos">
+          <p class="ancora-de">de <span class="riscado">R$ 297</span> por</p>
+          <p class="ancora-por"><span class="moeda">R$</span>79,90</p>
+          <p class="ancora-parcela">à vista ou 8x de R$ 11,14</p>
+        </div>
+        <p class="economia"><strong>R$ 217,10</strong> a menos</p>
+        <p class="sempre">No salão, você paga cada vez que vai. Aqui, paga <strong>uma vez</strong> e aprende <em>para sempre.</em></p>
+        <button class="botao botao-compra botao-grande" type="button" data-checkout>Quero me inscrever por R$ 79,90</button>
+        <div class="garantia-bloco">
+          <svg class="icone" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 C31 5 35 16 35 24 L35 40 Q35 43 32 43 L16 43 Q13 43 13 40 L13 24 C13 16 17 5 24 5 Z"/><path class="traco" d="M18 26 L22 30 L30 21"/></svg>
+          <p><strong>7 dias de garantia.</strong> Se o conteúdo não for o que está descrito aqui, você pede o dinheiro de volta, sem burocracia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Perguntas rápidas -->
+    <section class="perguntas" id="perguntas" aria-labelledby="titulo-perguntas">
+      <div class="bloco">
+        <div class="cabeca">
+          <p class="sobretitulo">Perguntas rápidas</p>
+          <h2 id="titulo-perguntas">Antes de <em>começar.</em></h2>
+        </div>
+        <div class="faq">
+          <details class="pergunta" data-revela>
+            <summary>Preciso ter experiência?</summary>
+            <div class="resposta"><p>Não. O curso vai do básico ao avançado, com passo a passo simples e didático, para quem já tem ou não tem conhecimento na área.</p></div>
+          </details>
+          <details class="pergunta" data-revela>
+            <summary>Como eu acesso as aulas?</summary>
+            <div class="resposta"><p>Depois do pedido, você recebe um e-mail com os dados de acesso à área da aluna e já pode começar. Dá para estudar pelo computador, tablet ou celular.</p></div>
+          </details>
+          <details class="pergunta" data-revela>
+            <summary>Como recebo os certificados?</summary>
+            <div class="resposta"><p>Ao concluir, você gera e baixa os dois certificados (Alongamento e Nail Art em Alongamento, 8 horas cada) direto na área da aluna.</p></div>
+          </details>
+          <details class="pergunta" data-revela>
+            <summary>O acesso expira?</summary>
+            <div class="resposta"><p>Não. O acesso é vitalício: você pode rever as aulas quando quiser.</p></div>
+          </details>
+          <details class="pergunta" data-revela>
+            <summary>E se eu não gostar?</summary>
+            <div class="resposta"><p>Você tem 7 dias de garantia. Se o conteúdo não for o descrito, o dinheiro é devolvido sem burocracia.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Fechamento -->
+    <section class="fechamento" id="fechamento" aria-labelledby="titulo-fechamento">
+      <div class="bloco fechamento-miolo">
+        <p class="sobretitulo">Pronta para começar?</p>
+        <h2 id="titulo-fechamento">A próxima unha que você fizer pode ser <em>a sua.</em></h2>
+        <p class="fechamento-apoio">34 aulas, 2 certificados e 3 bônus por R$ 79,90, com 7 dias de garantia.</p>
+        <div class="fechamento-acoes">
+          <button class="botao botao-compra botao-grande" type="button" data-checkout>Quero me inscrever</button>
+          <a class="botao botao-zap-fim" data-zap href="https://wa.me/5521959009892" target="_blank" rel="noopener">
+            <svg class="icone-zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 L6.2 15.4 A8 8 0 1 1 9 18 Z"/><path class="fala" d="M9.5 9.5 C9.5 12 11.5 14.5 14.5 14.5"/></svg>
+            Tirar dúvida no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Página demonstrativa feita por um afiliado. O curso Escola Designer de Unhas é de outro produtor e é vendido pela Hotmart.</p>
+    <button class="assinatura" type="button" id="assinatura" aria-label="Criado por Roberto Siqueira, Estúdio Basileus">
+      <svg class="coroa" viewBox="0 0 32 24" aria-hidden="true"><path d="M3 20 L5 6 L11 13 L16 3 L21 13 L27 6 L29 20 Z"/><path class="coroa-base" d="M4 22 H28"/></svg>
+      <span>Criado por Roberto Siqueira · Estúdio Basileus</span>
+    </button>
+  </footer>
+
+  <!-- Barra fixa do celular: aparece depois da abertura -->
+  <div class="barra" id="barra" aria-hidden="true">
+    <p><span>R$ 79,90</span> à vista</p>
+    <button class="botao botao-compra" type="button" data-checkout tabindex="-1">Quero me inscrever</button>
+  </div>
+
+  <!-- Janela do checkout (demonstração) -->
+  <dialog class="janela" id="janela" aria-labelledby="janela-titulo">
+    <h2 id="janela-titulo">Página de demonstração</h2>
+    <p>Aqui a aluna iria para o checkout seguro da Hotmart, com o link de afiliado.</p>
+    <div class="janela-acoes">
+      <a class="botao botao-zap" id="linkZap" href="https://wa.me/5521959009892" target="_blank" rel="noopener">Tirar dúvida no WhatsApp</a>
+      <button class="botao botao-fechar" type="button" id="fecharJanela">Fechar</button>
+    </div>
+  </dialog>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
