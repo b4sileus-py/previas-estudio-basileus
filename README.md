@@ -15,8 +15,9 @@ Páginas de demonstração criadas pelo **Estúdio Basileus** e publicadas pelo 
 ### 🎬 Vídeo
 
 Anúncio vertical (9:16) feito a partir da identidade da própria página, para stories, status e reels. Os vídeos são
-produzidos em código, com Remotion. A Latos Mídia tem duas versões (22 s e 67 s). No vídeo da página de unhas, os rostos
-das alunas e os nomes nos certificados aparecem desfocados, seguindo a mesma regra da página.
+produzidos em código, com Remotion. A Latos Mídia tem duas versões (22 s e 67 s). A página de unhas tem seis: três
+anúncios de 30 s, com aberturas diferentes, e três vídeos de 52 s que usam a página como roteiro. Nos vídeos de unhas, os
+rostos das alunas e os nomes nos certificados aparecem desfocados, seguindo a mesma regra da página.
 
 ### 📄 Sobre a página
 
