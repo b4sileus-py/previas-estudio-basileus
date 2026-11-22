@@ -1,0 +1,115 @@
+<!doctype html>
+<!-- Criado por Roberto Siqueira · Estúdio Basileus -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f6f2">
+<meta name="description" content="Objetivo, processo de criação e decisões de design da página da Latos Mídia, feita pelo Estúdio Basileus.">
+<title>Sobre a página · Latos Mídia</title>
+<style>
+@font-face{font-family:"Archivo";src:url("../fonts/archivo-variavel.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url("../fonts/ibm-plex-mono-500.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{--fundo:#f7f6f2;--superficie:#ffffff;--texto:#0b0b0b;--texto-2:#55524c;--linha:#e3e0d8;--linha-forte:#c9c5bb;
+--destaque:#b24709;--destaque-fundo:#fee6d8;--botao:#0b0b0b;--botao-texto:#f7f6f2;--foco:#3586be;
+--f-titulo:"Archivo",system-ui,sans-serif;--f-texto:"Archivo",system-ui,sans-serif;--f-rotulo:"Plex Mono",ui-monospace,monospace;
+--peso-titulo:850;--estilo-titulo:normal;--caixa-titulo:none;--esp-titulo:-0.03em;--caixa-rotulo:uppercase;--esp-rotulo:.08em;--tam-rotulo:.8rem;color-scheme:light}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fundo);color:var(--texto);font:500 1.125rem/1.6 var(--f-texto);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--foco);outline-offset:3px;border-radius:4px}
+.barra{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;
+  background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.barra a{font:600 .95rem/1.2 var(--f-texto);text-decoration:none;padding:10px 4px}
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;border:0;
+  background:var(--botao);color:var(--botao-texto);font:700 1rem/1.2 var(--f-texto);text-decoration:none;cursor:pointer;white-space:nowrap}
+.botao.contorno{background:transparent;color:var(--texto);border:2px solid var(--linha-forte)}
+.miolo{max-width:44rem;margin:0 auto;padding:0 16px}
+.rotulo{font:500 var(--tam-rotulo)/1.4 var(--f-rotulo);letter-spacing:var(--esp-rotulo);text-transform:var(--caixa-rotulo);color:var(--destaque);margin:0 0 12px}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:var(--peso-titulo);text-transform:var(--caixa-titulo);letter-spacing:var(--esp-titulo);line-height:1.05;text-wrap:balance}
+h1{font-size:clamp(2.6rem,11vw,4.6rem);margin:0}
+h2{font-size:clamp(1.9rem,7vw,2.7rem);margin:0 0 20px}
+h3{font-size:1.25rem;margin:0 0 8px;line-height:1.2}
+p{margin:0 0 18px}
+.capa{min-height:calc(100svh - 60px);display:flex;flex-direction:column;justify-content:center;padding:56px 0 40px}
+.sub{font-size:1.3rem;line-height:1.45;color:var(--texto-2);margin:22px 0 0;max-width:32ch}
+.ficha{display:grid;gap:0;margin:36px 0 0;padding:0;list-style:none;border-top:1px solid var(--linha)}
+.ficha li{display:grid;grid-template-columns:minmax(8rem,34%) 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--linha);font-size:1rem}
+.ficha b{font-weight:600;color:var(--texto-2)}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 0}
+.resumo{background:var(--destaque-fundo);border-left:5px solid var(--destaque);border-radius:16px;padding:20px 22px;margin:8px 0 28px}
+.resumo p:last-child{margin:0}
+.sumario{padding:48px 0;border-top:1px solid var(--linha)}
+.sumario ol{list-style:none;margin:0;padding:0;counter-reset:s}
+.sumario li{counter-increment:s;border-bottom:1px solid var(--linha)}
+.sumario a{display:flex;gap:18px;padding:14px 0;text-decoration:none;font-weight:600}
+.sumario a::before{content:counter(s,decimal-leading-zero);font:500 .95rem/1.7 var(--f-rotulo);color:var(--destaque);min-width:2ch}
+section.cap{padding:56px 0 24px;border-top:1px solid var(--linha)}
+.num{display:block;font:500 var(--tam-rotulo)/1 var(--f-rotulo);letter-spacing:var(--esp-rotulo);text-transform:var(--caixa-rotulo);color:var(--destaque);margin:0 0 14px}
+.caixa{background:var(--superficie);border:1px solid var(--linha);border-radius:16px;padding:20px 22px;margin:24px 0}
+.caixa h3{color:var(--destaque);font-family:var(--f-texto);text-transform:none;letter-spacing:0;font-weight:700;font-size:1.05rem}
+.caixa p:last-child,.caixa ul:last-child{margin-bottom:0}
+.tabela{overflow-x:auto;margin:8px 0 24px}
+table{width:100%;border-collapse:collapse;font-size:1rem;line-height:1.5}
+th,td{text-align:left;vertical-align:top;padding:12px 12px 12px 0;border-bottom:1px solid var(--linha)}
+th{font:600 .82rem/1.3 var(--f-rotulo);letter-spacing:var(--esp-rotulo);text-transform:var(--caixa-rotulo);color:var(--texto-2)}
+td:first-child{font-weight:650;padding-right:16px;width:40%}
+ul.lista{margin:0 0 24px;padding:0;list-style:none}
+ul.lista li{position:relative;padding:0 0 14px 28px}
+ul.lista li::before{content:"";position:absolute;left:2px;top:.6em;width:12px;height:6px;background:var(--destaque);transform:skewX(-30deg)}
+.fim{padding:56px 0 40px;border-top:1px solid var(--linha)}
+.credito{padding:32px 0 48px;color:var(--texto-2);font-size:.95rem;border-top:1px solid var(--linha);margin-top:24px}
+.aviso{color:var(--texto-2);font-size:.95rem}
+.videos{display:grid;gap:40px;padding:24px 0 8px}
+.video video{display:block;width:100%;max-width:420px;aspect-ratio:9/16;max-height:78svh;height:auto;border-radius:20px;background:#000;border:1px solid var(--linha)}
+.video h2{font-size:clamp(1.6rem,6vw,2.2rem);margin:18px 0 6px}
+@media (min-width:900px){.videos.duas{grid-template-columns:1fr 1fr}}
+@media print{
+  @page{size:A4;margin:0}
+  html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--fundo)}
+  body{font-size:12.5pt;line-height:1.55}
+  .barra,.acoes,.sem-impressao{display:none!important}
+  .miolo{max-width:none;padding:18mm 20mm;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .capa{min-height:auto;height:250mm;padding:0;break-after:page}
+  .sumario{break-after:page;border:0;padding-top:0}
+  section.cap{padding:26pt 0 6pt}
+  h1{font-size:42pt} h2{font-size:24pt;break-after:avoid} .sub{font-size:15pt}
+  .num{break-after:avoid}
+  .caixa,.resumo,tr,li{break-inside:avoid}
+  .fim{padding-top:26pt}
+  a{text-decoration:none}
+}
+
+.faixas{display:flex;gap:8px;height:14px;max-width:340px;margin:28px 0 0}.faixas span{flex:1;transform:skewX(-30deg)}
+</style>
+</head>
+<body>
+<nav class="barra" aria-label="Navegação">
+  <a href="../">← Ver a página</a>
+  <button class="botao" type="button" onclick="window.print()">Salvar em PDF</button>
+</nav>
+<main class="miolo">
+  <header class="capa">
+    <p class="rotulo">Estúdio Basileus · Sobre a página</p>
+    <h1>Latos Mídia</h1>
+    <p class="sub">Como nasceu a página de uma produtora de conteúdo, do briefing ao vídeo de divulgação.</p>
+    <div class="faixas" aria-hidden="true"><span style="background:#f6c324"></span><span style="background:#f76c1d"></span><span style="background:#3586be"></span></div>
+    <ul class="ficha"><li><b>Natureza</b><span>Portfólio do estúdio, com dados reais autorizados</span></li><li><b>Concluída em</b><span>22/11/2026</span></li><li><b>Feita com</b><span>HTML, CSS e JavaScript, com GSAP e Lenis</span></li><li><b>Negócio</b><span>Produção de conteúdo e comunicação para pequenos negócios</span></li></ul>
+    <div class="acoes"><a class="botao" href="../">Ver a página</a><a class="botao contorno" href="../video/">Ver o vídeo</a></div>
+  </header>
+  <div class="resumo"><p class="rotulo">Em poucas palavras</p><p>A Latos Mídia grava, edita e cuida da presença de pequenos negócios no Rio de Janeiro. A página foi feita como um projeto contratado de verdade, com autorização da empresa, para mostrar o trabalho antes de qualquer promessa.</p></div>
+  <nav class="sumario" aria-labelledby="sumario-t"><h2 id="sumario-t">Sumário</h2><ol><li><a href="#cap1">O objetivo</a></li><li><a href="#cap2">De onde veio o conteúdo</a></li><li><a href="#cap3">A ideia central</a></li><li><a href="#cap4">Como foi feita</a></li><li><a href="#cap5">O que a página tem de especial</a></li><li><a href="#cap6">Qualidade conferida</a></li><li><a href="#cap7">O vídeo de divulgação</a></li><li><a href="#fim">Resumo e próximos passos</a></li></ol></nav>
+  <section class="cap" id="cap1" aria-labelledby="t1"><span class="num">Capítulo 01</span><h2 id="t1">O objetivo</h2><p>Quem visita é dono de pequeno negócio, quase sempre no celular, vindo do Instagram ou de um link no WhatsApp. A página tem uma tarefa só: levar essa pessoa a chamar a Latos no WhatsApp, com a mensagem já dizendo o que interessa.</p><p>O posicionamento: <strong>a equipe de comunicação que o pequeno negócio não tem</strong>. Grava, edita, arruma o digital e imprime, numa operação só, próxima e com preço claro.</p><div class="caixa"><h3>Argumento central</h3><p>Mostrar antes de dizer. O trabalho real aparece logo na abertura, dentro de um monitor de câmera.</p></div></section><section class="cap" id="cap2" aria-labelledby="t2"><span class="num">Capítulo 02</span><h2 id="t2">De onde veio o conteúdo</h2><div class="tabela"><table><thead><tr><th scope="col">Fonte</th><th scope="col">O que trouxe</th></tr></thead><tbody><tr><td>Página de extensão (jun/2026)</td><td>Fotos do portfólio, cedidas pelo Roni Santos, fundador da Latos</td></tr><tr><td>Site oficial (out/2026)</td><td>Serviços, pacotes e preços</td></tr><tr><td>Respostas do Roni (22/11/2026)</td><td>WhatsApp, logo atual, região atendida e autorização</td></tr></tbody></table></div><p>Nada foi inventado. Todos os preços aparecem, exatamente como no site oficial e confirmados pelo Roni. As dúvidas respondidas na página usam só fatos confirmados, e o que os pacotes não incluem está dito com clareza.</p><div class="caixa"><h3>Autorização</h3><p>O Roni autorizou recriar a página e exibi-la no portfólio do estúdio, fora dos buscadores. O site oficial da Latos não foi alterado.</p></div></section><section class="cap" id="cap3" aria-labelledby="t3"><span class="num">Capítulo 03</span><h2 id="t3">A ideia central</h2><p><strong>A página é uma ilha de edição.</strong> As três faixas do logo da Latos saem dele e viram as trilhas de uma linha do tempo. Cada cor é uma frente de serviço e guia a pessoa pela página:</p><div class="tabela"><table><thead><tr><th scope="col">Faixa</th><th scope="col">Frente</th></tr></thead><tbody><tr><td>Laranja</td><td>Trilha 01 · Produção de Conteúdo</td></tr><tr><td>Azul</td><td>Trilha 02 · Soluções Digitais</td></tr><tr><td>Amarelo</td><td>Trilha 03 · Comunicação Visual</td></tr></tbody></table></div><p>Detalhes de câmera completam o universo, sempre discretos: ponto de REC, medidor de áudio, cantos de enquadramento e o formato vertical 9:16. O fundo é claro e limpo, por preferência do Roni. Os títulos usam Archivo, e a voz técnica da câmera usa IBM Plex Mono.</p><div class="caixa"><h3>Teste de identidade</h3><p>Sem o logo e as três faixas, a página perde a lógica. Ela não serve para outro negócio.</p></div></section><section class="cap" id="cap4" aria-labelledby="t4"><span class="num">Capítulo 04</span><h2 id="t4">Como foi feita</h2><p>O estúdio segue as mesmas sete etapas em todo site. Nesta página, todas aconteceram entre 21 e 22/11/2026.</p><div class="tabela"><table><thead><tr><th scope="col">Etapa</th><th scope="col">O que aconteceu</th></tr></thead><tbody><tr><td>1 · Natureza</td><td>Definida como portfólio com dados reais autorizados</td></tr><tr><td>2 · Briefing</td><td>Fontes reunidas e fatos confirmados com o Roni</td></tr><tr><td>3 · Estratégia</td><td>Estrutura de 10 seções, aprovada pelo Roberto e pelo Roni</td></tr><tr><td>4 · Direção visual</td><td>Protótipo revisado em cinco versões (v0.1 a v0.5) até a aprovação</td></tr><tr><td>5 · Arquitetura</td><td>HTML, CSS e JavaScript puros; GSAP e Lenis na própria pasta, sem depender de outros servidores</td></tr><tr><td>6 · Desenvolvimento</td><td>Seção por seção, com revisão do Roberto no celular e no computador</td></tr><tr><td>7 · Auditoria</td><td>Conferência técnica completa e revisão final no celular</td></tr></tbody></table></div></section><section class="cap" id="cap5" aria-labelledby="t5"><span class="num">Capítulo 05</span><h2 id="t5">O que a página tem de especial</h2><ul class="lista"><li>Monitor de câmera na abertura, com as fotos do trabalho e uma linha do tempo que se arrasta com o dedo.</li><li>Pacotes com medidas desenhadas a partir dos dados reais: barra de horas de gravação e quadrinhos de vídeos por mês.</li><li>Pacote Pro e Kit Essencial em destaque, com uma luz nas três cores girando atrás do cartão.</li><li>“Monte seu pedido”: a pessoa toca nas opções e a mensagem do WhatsApp fica pronta, sem formulário e sem coletar dados.</li><li>“Como funciona” em quatro cenas: a rolagem leva um cabeçote pela trilha e cada cena bate a sua claquete.</li><li>Assinatura do estúdio no rodapé: a coroa faz a claquete bater “Corta!”.</li></ul></section><section class="cap" id="cap6" aria-labelledby="t6"><span class="num">Capítulo 06</span><h2 id="t6">Qualidade conferida</h2><div class="tabela"><table><thead><tr><th scope="col">Item</th><th scope="col">Resultado</th></tr></thead><tbody><tr><td>Telas</td><td>7 larguras, de 320 a 1920 px, sem rolagem lateral</td></tr><tr><td>Contraste</td><td>Texto principal 18,2:1 (o mínimo recomendado é 4,5:1)</td></tr><tr><td>Teclado</td><td>Ordem de foco lógica; botões e imagens com nome para leitores de tela</td></tr><tr><td>Movimento</td><td>Com “reduzir movimento” ligado, a página fica completa e parada</td></tr><tr><td>Peso</td><td>Cerca de 1,7 MB rolando a página inteira, fotos em WebP</td></tr><tr><td>Privacidade</td><td>Sem formulário, sem coleta de dados, fora dos buscadores</td></tr></tbody></table></div></section><section class="cap" id="cap7" aria-labelledby="t7"><span class="num">Capítulo 07</span><h2 id="t7">O vídeo de divulgação</h2><p>Depois da página, a identidade virou um anúncio vertical para stories e reels, feito em código (Remotion) com as mesmas cores, fontes, fotos e preços. São duas versões: uma curta, de 22 segundos, e uma completa, de 67 segundos, que percorre todas as seções da página.</p><p>Os cortes caem na batida da trilha, criada no Suno, e os efeitos sonoros foram sintetizados em código.</p><p class="sem-impressao"><a class="botao contorno" href="../video/">Ver o vídeo</a></p></section>
+  <section class="fim" id="fim" aria-labelledby="fim-t">
+    <span class="num">Para fechar</span>
+    <h2 id="fim-t">Resumo e próximos passos</h2>
+    <div class="caixa"><h3>Resumo</h3><p>Uma página com identidade própria, todos os preços organizados por frente, conversão pelo WhatsApp com mensagem pronta e qualidade conferida em telas, acessibilidade e privacidade.</p></div><div class="caixa"><h3>Próximos passos</h3><p>Se a Latos quiser adotar a página, ela vira um site contratado, com domínio próprio.</p></div>
+    <p class="aviso">Página demonstrativa, fora dos buscadores. Endereço: https://b4sileus-py.github.io/previas-estudio-basileus/latos-midia/</p>
+  </section>
+  <footer class="credito">Criado por Roberto Siqueira · Estúdio Basileus</footer>
+</main>
+</body>
+</html>
