@@ -1,0 +1,116 @@
+<!doctype html>
+<!-- Criado por Roberto Siqueira · Estúdio Basileus -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#380022">
+<meta name="description" content="Objetivo, processo de criação e decisões de design da página de afiliado Escola Designer de Unhas, do Estúdio Basileus.">
+<title>Sobre a página · Escola Designer de Unhas</title>
+<style>
+@font-face{font-family:"Montserrat";src:url("../fonts/montserrat-variavel.woff2") format("woff2");font-weight:400 900;font-display:swap}
+@font-face{font-family:"Playfair Display";src:url("../fonts/playfair-display-italica-variavel.woff2") format("woff2");font-weight:600 900;font-style:italic;font-display:swap}
+:root{--fundo:#380022;--superficie:#4B002D;--texto:#FFECEC;--texto-2:#E3B9C2;--linha:#67003E;--linha-forte:#8a1a57;
+--destaque:#FE9FA6;--destaque-fundo:#4B002D;--botao:#FE9FA6;--botao-texto:#380022;--foco:#FFFFFF;
+--f-titulo:"Montserrat","Segoe UI",Arial,sans-serif;--f-texto:"Montserrat","Segoe UI",Arial,sans-serif;--f-rotulo:"Montserrat","Segoe UI",Arial,sans-serif;
+--peso-titulo:900;--estilo-titulo:normal;--caixa-titulo:uppercase;--esp-titulo:-0.01em;--caixa-rotulo:uppercase;--esp-rotulo:.12em;--tam-rotulo:.78rem;color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fundo);color:var(--texto);font:500 1.125rem/1.6 var(--f-texto);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--foco);outline-offset:3px;border-radius:4px}
+.barra{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;
+  background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.barra a{font:600 .95rem/1.2 var(--f-texto);text-decoration:none;padding:10px 4px}
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;border:0;
+  background:var(--botao);color:var(--botao-texto);font:700 1rem/1.2 var(--f-texto);text-decoration:none;cursor:pointer;white-space:nowrap}
+.botao.contorno{background:transparent;color:var(--texto);border:2px solid var(--linha-forte)}
+.miolo{max-width:44rem;margin:0 auto;padding:0 16px}
+.rotulo{font:500 var(--tam-rotulo)/1.4 var(--f-rotulo);letter-spacing:var(--esp-rotulo);text-transform:var(--caixa-rotulo);color:var(--destaque);margin:0 0 12px}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:var(--peso-titulo);text-transform:var(--caixa-titulo);letter-spacing:var(--esp-titulo);line-height:1.05;text-wrap:balance}
+h1{font-size:clamp(2.6rem,11vw,4.6rem);margin:0}
+h2{font-size:clamp(1.9rem,7vw,2.7rem);margin:0 0 20px}
+h3{font-size:1.25rem;margin:0 0 8px;line-height:1.2}
+p{margin:0 0 18px}
+.capa{min-height:calc(100svh - 60px);display:flex;flex-direction:column;justify-content:center;padding:56px 0 40px}
+.sub{font-size:1.3rem;line-height:1.45;color:var(--texto-2);margin:22px 0 0;max-width:32ch}
+.ficha{display:grid;gap:0;margin:36px 0 0;padding:0;list-style:none;border-top:1px solid var(--linha)}
+.ficha li{display:grid;grid-template-columns:minmax(8rem,34%) 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--linha);font-size:1rem}
+.ficha b{font-weight:600;color:var(--texto-2)}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 0}
+.resumo{background:var(--destaque-fundo);border-left:5px solid var(--destaque);border-radius:16px;padding:20px 22px;margin:8px 0 28px}
+.resumo p:last-child{margin:0}
+.sumario{padding:48px 0;border-top:1px solid var(--linha)}
+.sumario ol{list-style:none;margin:0;padding:0;counter-reset:s}
+.sumario li{counter-increment:s;border-bottom:1px solid var(--linha)}
+.sumario a{display:flex;gap:18px;padding:14px 0;text-decoration:none;font-weight:600}
+.sumario a::before{content:counter(s,decimal-leading-zero);font:500 .95rem/1.7 var(--f-rotulo);color:var(--destaque);min-width:2ch}
+section.cap{padding:56px 0 24px;border-top:1px solid var(--linha)}
+.num{display:block;font:500 var(--tam-rotulo)/1 var(--f-rotulo);letter-spacing:var(--esp-rotulo);text-transform:var(--caixa-rotulo);color:var(--destaque);margin:0 0 14px}
+.caixa{background:var(--superficie);border:1px solid var(--linha);border-radius:16px;padding:20px 22px;margin:24px 0}
+.caixa h3{color:var(--destaque);font-family:var(--f-texto);text-transform:none;letter-spacing:0;font-weight:700;font-size:1.05rem}
+.caixa p:last-child,.caixa ul:last-child{margin-bottom:0}
+.tabela{overflow-x:auto;margin:8px 0 24px}
+table{width:100%;border-collapse:collapse;font-size:1rem;line-height:1.5}
+th,td{text-align:left;vertical-align:top;padding:12px 12px 12px 0;border-bottom:1px solid var(--linha)}
+th{font:600 .82rem/1.3 var(--f-rotulo);letter-spacing:var(--esp-rotulo);text-transform:var(--caixa-rotulo);color:var(--texto-2)}
+td:first-child{font-weight:650;padding-right:16px;width:40%}
+ul.lista{margin:0 0 24px;padding:0;list-style:none}
+ul.lista li{position:relative;padding:0 0 14px 28px}
+ul.lista li::before{content:"";position:absolute;left:2px;top:.6em;width:12px;height:6px;background:var(--destaque);transform:skewX(-30deg)}
+.fim{padding:56px 0 40px;border-top:1px solid var(--linha)}
+.credito{padding:32px 0 48px;color:var(--texto-2);font-size:.95rem;border-top:1px solid var(--linha);margin-top:24px}
+.aviso{color:var(--texto-2);font-size:.95rem}
+.videos{display:grid;gap:40px;padding:24px 0 8px}
+.video video{display:block;width:100%;max-width:420px;aspect-ratio:9/16;max-height:78svh;height:auto;border-radius:20px;background:#000;border:1px solid var(--linha)}
+.video h2{font-size:clamp(1.6rem,6vw,2.2rem);margin:18px 0 6px}
+@media (min-width:900px){.videos.duas{grid-template-columns:1fr 1fr}}
+@media print{
+  @page{size:A4;margin:0}
+  html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--fundo)}
+  body{font-size:12.5pt;line-height:1.55}
+  .barra,.acoes,.sem-impressao{display:none!important}
+  .miolo{max-width:none;padding:18mm 20mm;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .capa{min-height:auto;height:250mm;padding:0;break-after:page}
+  .sumario{break-after:page;border:0;padding-top:0}
+  section.cap{padding:26pt 0 6pt}
+  h1{font-size:42pt} h2{font-size:24pt;break-after:avoid} .sub{font-size:15pt}
+  .num{break-after:avoid}
+  .caixa,.resumo,tr,li{break-inside:avoid}
+  .fim{padding-top:26pt}
+  a{text-decoration:none}
+}
+
+.linha-rosa{width:120px;height:3px;background:#EF828B;margin:28px 0 0;border-radius:3px}
+em.real{font-family:"Playfair Display",Georgia,serif;font-style:italic;text-transform:none;font-weight:800;color:var(--destaque)}
+</style>
+</head>
+<body>
+<nav class="barra" aria-label="Navegação">
+  <a href="../">← Ver a página</a>
+  <button class="botao" type="button" onclick="window.print()">Salvar em PDF</button>
+</nav>
+<main class="miolo">
+  <header class="capa">
+    <p class="rotulo">Estúdio Basileus · Sobre a página</p>
+    <h1>Escola Designer <em class="real">de Unhas</em></h1>
+    <p class="sub">Uma página de afiliado feita do zero, como experimento do estúdio.</p>
+    <div class="linha-rosa" aria-hidden="true"></div>
+    <ul class="ficha"><li><b>Natureza</b><span>Experimento do estúdio, publicado como portfólio</span></li><li><b>Concluída em</b><span>18/11/2026</span></li><li><b>Feita com</b><span>HTML, CSS e JavaScript, com GSAP e Lenis</span></li><li><b>Produto</b><span>Curso online de unhas de outro produtor (Hotmart)</span></li></ul>
+    <div class="acoes"><a class="botao" href="../">Ver a página</a><a class="botao contorno" href="../video/">Ver o vídeo</a></div>
+  </header>
+  <div class="resumo"><p class="rotulo">Em poucas palavras</p><p>Simulação do processo completo de uma página de vendas para afiliado de um curso online de unhas. A página não roda em anúncio e não vende de verdade: o botão de compra abre um aviso de demonstração.</p></div>
+  <nav class="sumario" aria-labelledby="sumario-t"><h2 id="sumario-t">Sumário</h2><ol><li><a href="#cap1">O objetivo</a></li><li><a href="#cap2">De onde veio o conteúdo</a></li><li><a href="#cap3">A ideia central</a></li><li><a href="#cap4">Como foi feita</a></li><li><a href="#cap5">O que a página tem de especial</a></li><li><a href="#cap6">Qualidade conferida</a></li><li><a href="#cap7">O vídeo de divulgação</a></li><li><a href="#fim">Resumo e próximos passos</a></li></ol></nav>
+  <section class="cap" id="cap1" aria-labelledby="t1"><span class="num">Capítulo 01</span><h2 id="t1">O objetivo</h2><p>Página de vendas curta e clássica, toda voltada para um clique: o botão de compra. O segundo caminho é tirar dúvida no WhatsApp, com a mensagem pronta. O público são mulheres de 25 a 50 anos.</p><div class="caixa"><h3>Continuidade com o anúncio</h3><p>Quem chega pelo anúncio em vídeo precisa sentir que continua no mesmo lugar: a mesma paleta, as mesmas fontes e o mesmo logo.</p></div></section><section class="cap" id="cap2" aria-labelledby="t2"><span class="num">Capítulo 02</span><h2 id="t2">De onde veio o conteúdo</h2><p>Tudo vem do material de divulgação que o produtor oferece aos afiliados: modelo de página, detalhes do curso, comentários de alunas e fotos de unhas.</p><div class="tabela"><table><thead><tr><th scope="col">Fato</th><th scope="col">Como aparece</th></tr></thead><tbody><tr><td>Preço</td><td>De R$ 297 por R$ 79,90 à vista ou 8x de R$ 11,14</td></tr><tr><td>Curso</td><td>34 videoaulas em 13 módulos, do básico ao avançado</td></tr><tr><td>Certificados</td><td>2, de 8 h cada</td></tr><tr><td>Garantia</td><td>7 dias</td></tr><tr><td>Bônus</td><td>Ficha de anamnese, lista de fornecedores e e-book de acrigel</td></tr></tbody></table></div><div class="caixa"><h3>O que ficou de fora, de propósito</h3><ul class="lista"><li>Nenhum rosto na página.</li><li>Comentários com o texto exato dos prints, nome abreviado e só o ano real (2020).</li><li>Sem promessa de renda e sem urgência falsa. A simulação de ganhos leva aviso de simulação.</li><li>“Mais de 30 técnicas” saiu por não ter fonte no material.</li></ul></div></section><section class="cap" id="cap3" aria-labelledby="t3"><span class="num">Capítulo 03</span><h2 id="t3">A ideia central</h2><p><strong>“A unha é a janela.”</strong> O formato amendoado da unha, o mesmo do logo dos anúncios, é a moldura da página: as fotos da galeria aparecem dentro de uma unha, e o estúdio desenha a unha que a visitante monta.</p><p>A paleta é o vinho da noite dos anúncios, com uma única cor de destaque para o preço, a palavra-chave e o botão. Montserrat nos títulos e textos; Playfair Display itálica só na palavra que se destaca.</p></section><section class="cap" id="cap4" aria-labelledby="t4"><span class="num">Capítulo 04</span><h2 id="t4">Como foi feita</h2><p>As sete etapas do estúdio aconteceram em 18/11/2026.</p><div class="tabela"><table><thead><tr><th scope="col">Etapa</th><th scope="col">O que aconteceu</th></tr></thead><tbody><tr><td>1 · Natureza</td><td>Experimento do estúdio, sem anúncio e sem domínio próprio</td></tr><tr><td>2 · Briefing</td><td>Material do produtor conferido; fotos com rosto descartadas</td></tr><tr><td>3 · Estratégia</td><td>Oito seções, com o botão de compra na primeira tela e a cada duas seções</td></tr><tr><td>4 · Direção visual</td><td>Protótipo aprovado: abertura, estúdio da unha, galeria e purpurina</td></tr><tr><td>5 · Arquitetura</td><td>HTML, CSS e JavaScript puros; GSAP e Lenis na própria pasta</td></tr><tr><td>6 · Desenvolvimento</td><td>Seção por seção, com ajustes pedidos pelo Roberto depois de ver no celular</td></tr><tr><td>7 · Auditoria</td><td>Conferência técnica completa e revisão final no celular</td></tr></tbody></table></div></section><section class="cap" id="cap5" aria-labelledby="t5"><span class="num">Capítulo 05</span><h2 id="t5">O que a página tem de especial</h2><ul class="lista"><li>Estúdio “Monte a sua primeira unha”: a visitante escolhe o formato (a lixa passa), a cor do gel, o acabamento e o carimbo, e finaliza na cabine de LED. No fim, vê as técnicas usadas e o módulo do curso de cada uma.</li><li>Galeria em leque com as técnicas, cada foto dentro da silhueta de uma unha.</li><li>Purpurina que flutua atrás do conteúdo e reage ao dedo e ao mouse.</li><li>“Imagine a sua agenda cheia”: simulação de atendimentos no mês, com aviso de simulação.</li><li>“No salão, você paga toda vez”: 12 meses de salão contra uma parcela do curso.</li><li>Botão de compra que abre uma janela explicando que a página é demonstrativa.</li></ul></section><section class="cap" id="cap6" aria-labelledby="t6"><span class="num">Capítulo 06</span><h2 id="t6">Qualidade conferida</h2><div class="tabela"><table><thead><tr><th scope="col">Item</th><th scope="col">Resultado</th></tr></thead><tbody><tr><td>Telas</td><td>7 larguras, de 320 a 1920 px, sem rolagem lateral</td></tr><tr><td>Contraste</td><td>Texto 15,5:1 e botão 9:1 (o mínimo recomendado é 4,5:1)</td></tr><tr><td>Janela de compra</td><td>Foco preso dentro, fecha com Esc e devolve o foco ao botão</td></tr><tr><td>Movimento</td><td>Versão parada completa com “reduzir movimento”</td></tr><tr><td>Peso</td><td>Cerca de 600 KB com tudo</td></tr><tr><td>Privacidade</td><td>Sem formulário, sem coleta de dados e sem pixel; fora dos buscadores</td></tr></tbody></table></div></section><section class="cap" id="cap7" aria-labelledby="t7"><span class="num">Capítulo 07</span><h2 id="t7">O vídeo de divulgação</h2><p>O anúncio veio antes da página e deu a ela a paleta, as fontes e o logo. Foi feito em código (Remotion), na vertical, com 30 segundos.</p><p>Nesta versão publicada, os rostos das alunas e os nomes nos certificados estão desfocados, seguindo a mesma regra da página.</p><p class="sem-impressao"><a class="botao contorno" href="../video/">Ver o vídeo</a></p></section>
+  <section class="fim" id="fim" aria-labelledby="fim-t">
+    <span class="num">Para fechar</span>
+    <h2 id="fim-t">Resumo e próximos passos</h2>
+    <div class="caixa"><h3>Resumo</h3><p>Uma página de vendas curta, com identidade própria, interação que convida a visitante a montar a unha e conteúdo só com fatos do material do produtor.</p></div><div class="caixa"><h3>Próximos passos</h3><ul class="lista"><li>Testar com um leitor de tela de verdade.</li><li>Estudar um tipo próprio de projeto para páginas de afiliado no processo do estúdio.</li></ul></div>
+    <p class="aviso">Página demonstrativa, fora dos buscadores. Endereço: https://b4sileus-py.github.io/previas-estudio-basileus/escola-designer-unhas/</p>
+  </section>
+  <footer class="credito">Criado por Roberto Siqueira · Estúdio Basileus</footer>
+</main>
+</body>
+</html>
