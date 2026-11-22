@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#f7f6f2">
 <meta name="description" content="Vídeos de divulgação da página da Latos Mídia, feitos pelo Estúdio Basileus.">
-<title>Vídeo · Latos Mídia</title>
+<title>Vídeos · Latos Mídia</title>
 <style>
 @font-face{font-family:"Archivo";src:url("../fonts/archivo-variavel.woff2") format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Plex Mono";src:url("../fonts/ibm-plex-mono-500.woff2") format("woff2");font-weight:500;font-display:swap}
@@ -63,10 +63,13 @@ ul.lista li::before{content:"";position:absolute;left:2px;top:.6em;width:12px;he
 .fim{padding:56px 0 40px;border-top:1px solid var(--linha)}
 .credito{padding:32px 0 48px;color:var(--texto-2);font-size:.95rem;border-top:1px solid var(--linha);margin-top:24px}
 .aviso{color:var(--texto-2);font-size:.95rem}
-.videos{display:grid;gap:40px;padding:24px 0 8px}
-.video video{display:block;width:100%;max-width:420px;aspect-ratio:9/16;max-height:78svh;height:auto;border-radius:20px;background:#000;border:1px solid var(--linha)}
-.video h2{font-size:clamp(1.6rem,6vw,2.2rem);margin:18px 0 6px}
-@media (min-width:900px){.videos.duas{grid-template-columns:1fr 1fr}}
+.videos{display:grid;gap:40px 28px;padding:24px 0 8px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+/* largura tirada da altura: o player tem sempre a proporção exata do vídeo (9:16), sem faixa sobrando */
+.video video{display:block;width:min(100%,420px,calc(76svh * 9 / 16));height:auto;aspect-ratio:9/16;border-radius:20px;background:#000;border:1px solid var(--linha)}
+.video h2,.video h3.titulo-video{font-size:clamp(1.5rem,5vw,2rem);margin:18px 0 6px}
+.grupo{padding:32px 0 8px;border-top:1px solid var(--linha);margin-top:24px}
+.grupo>h2{margin:0 0 4px}
+.miolo.largo{max-width:68rem}
 @media print{
   @page{size:A4;margin:0}
   html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--fundo)}
@@ -97,22 +100,22 @@ ul.lista li::before{content:"";position:absolute;left:2px;top:.6em;width:12px;he
     <h1 style="font-size:clamp(2.2rem,9vw,3.6rem)">Latos Mídia</h1>
     <p class="sub">Anúncio vertical para stories e reels, feito a partir da identidade da página.</p>
   </header>
-  <div class="videos duas"><article class="video" aria-labelledby="v0">
-  <video controls playsinline preload="metadata" poster="capa-curto.webp" width="1080" height="1920" aria-describedby="vd0">
+  <div class="videos"><article class="video" aria-labelledby="v1">
+  <video controls playsinline preload="metadata" poster="capa-curto.webp" width="1080" height="1920" aria-describedby="vd1">
     <source src="latos-curto.mp4" type="video/mp4">
     Seu navegador não toca vídeo. <a href="latos-curto.mp4">Baixe o arquivo</a>.
   </video>
-  <h2 id="v0">Versão curta</h2>
+  <h2 id="v1">Versão curta</h2>
   <p class="rotulo">22 s · 9:16 · com trilha</p>
-  <p id="vd0">O essencial em seis cenas: o gancho, o trabalho, as três frentes, o pacote Pro, quem conduz e o contato.</p>
-</article><article class="video" aria-labelledby="v1">
-  <video controls playsinline preload="metadata" poster="capa-completo.webp" width="1080" height="1920" aria-describedby="vd1">
+  <p id="vd1">O essencial em seis cenas: o gancho, o trabalho, as três frentes, o pacote Pro, quem conduz e o contato.</p>
+</article><article class="video" aria-labelledby="v2">
+  <video controls playsinline preload="metadata" poster="capa-completo.webp" width="1080" height="1920" aria-describedby="vd2">
     <source src="latos-completo.mp4" type="video/mp4">
     Seu navegador não toca vídeo. <a href="latos-completo.mp4">Baixe o arquivo</a>.
   </video>
-  <h2 id="v1">Versão completa</h2>
+  <h2 id="v2">Versão completa</h2>
   <p class="rotulo">67 s · 9:16 · com trilha e efeitos</p>
-  <p id="vd1">A música inteira, percorrendo todas as seções da página: portfólio, planos, serviços digitais, impressos, como funciona, quem conduz e o pedido pelo WhatsApp.</p>
+  <p id="vd2">A música inteira, percorrendo todas as seções da página: portfólio, planos, serviços digitais, impressos, como funciona, quem conduz e o pedido pelo WhatsApp.</p>
 </article></div>
   <p class="aviso" style="margin-top:24px">Vídeos de portfólio do Estúdio Basileus, feitos com autorização da Latos Mídia. Preços e informações iguais aos da página.</p>
   <footer class="credito">Criado por Roberto Siqueira · Estúdio Basileus</footer>

@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#380022">
-<meta name="description" content="Vídeo de divulgação da página de afiliado Escola Designer de Unhas, do Estúdio Basileus.">
-<title>Vídeo · Escola Designer de Unhas</title>
+<meta name="description" content="Vídeos de divulgação da página de afiliado Escola Designer de Unhas, do Estúdio Basileus.">
+<title>Vídeos · Escola Designer de Unhas</title>
 <style>
 @font-face{font-family:"Montserrat";src:url("../fonts/montserrat-variavel.woff2") format("woff2");font-weight:400 900;font-display:swap}
 @font-face{font-family:"Playfair Display";src:url("../fonts/playfair-display-italica-variavel.woff2") format("woff2");font-weight:600 900;font-style:italic;font-display:swap}
@@ -63,10 +63,13 @@ ul.lista li::before{content:"";position:absolute;left:2px;top:.6em;width:12px;he
 .fim{padding:56px 0 40px;border-top:1px solid var(--linha)}
 .credito{padding:32px 0 48px;color:var(--texto-2);font-size:.95rem;border-top:1px solid var(--linha);margin-top:24px}
 .aviso{color:var(--texto-2);font-size:.95rem}
-.videos{display:grid;gap:40px;padding:24px 0 8px}
-.video video{display:block;width:100%;max-width:420px;aspect-ratio:9/16;max-height:78svh;height:auto;border-radius:20px;background:#000;border:1px solid var(--linha)}
-.video h2{font-size:clamp(1.6rem,6vw,2.2rem);margin:18px 0 6px}
-@media (min-width:900px){.videos.duas{grid-template-columns:1fr 1fr}}
+.videos{display:grid;gap:40px 28px;padding:24px 0 8px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+/* largura tirada da altura: o player tem sempre a proporção exata do vídeo (9:16), sem faixa sobrando */
+.video video{display:block;width:min(100%,420px,calc(76svh * 9 / 16));height:auto;aspect-ratio:9/16;border-radius:20px;background:#000;border:1px solid var(--linha)}
+.video h2,.video h3.titulo-video{font-size:clamp(1.5rem,5vw,2rem);margin:18px 0 6px}
+.grupo{padding:32px 0 8px;border-top:1px solid var(--linha);margin-top:24px}
+.grupo>h2{margin:0 0 4px}
+.miolo.largo{max-width:68rem}
 @media print{
   @page{size:A4;margin:0}
   html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--fundo)}
@@ -92,22 +95,62 @@ em.real{font-family:"Playfair Display",Georgia,serif;font-style:italic;text-tran
   <a href="../">← Ver a página</a>
   <a href="../sobre/">Sobre a página</a>
 </nav>
-<main class="miolo">
+<main class="miolo largo">
   <header style="padding:48px 0 8px">
     <p class="rotulo">Estúdio Basileus · Vídeo de divulgação</p>
     <h1 style="font-size:clamp(2.2rem,9vw,3.6rem)">Escola Designer <em class="real">de Unhas</em></h1>
-    <p class="sub">O anúncio que deu à página a paleta, as fontes e o logo.</p>
+    <p class="sub">Seis vídeos verticais: três anúncios curtos e três vídeos que contam a página.</p>
   </header>
-  <div class="videos"><article class="video" aria-labelledby="v0">
-  <video controls playsinline preload="metadata" poster="capa.webp" width="1080" height="1920" aria-describedby="vd0">
+  <section class="grupo" aria-labelledby="g0"><h2 id="g0">Anúncios</h2><p class="aviso">30 segundos cada. O mesmo anúncio com três aberturas diferentes, para testar qual chama mais atenção. Os rostos das alunas e os nomes nos certificados estão desfocados.</p><div class="videos"><article class="video" aria-labelledby="v1">
+  <video controls playsinline preload="metadata" poster="capa.webp" width="1080" height="1920" aria-describedby="vd1">
     <source src="anuncio-unhas.mp4" type="video/mp4">
     Seu navegador não toca vídeo. <a href="anuncio-unhas.mp4">Baixe o arquivo</a>.
   </video>
-  <h2 id="v0">Anúncio</h2>
+  <h3 id="v1" class="titulo-video">“Sua própria chefe”</h3>
   <p class="rotulo">30 s · 9:16 · com trilha</p>
-  <p id="vd0">Do gancho “e se você fosse sua própria chefe?” à oferta, com a simulação de ganhos e o aviso de simulação. Nesta versão, os rostos das alunas e os nomes nos certificados estão desfocados.</p>
-</article></div>
-  <p class="aviso" style="margin-top:24px">Vídeo de portfólio do Estúdio Basileus, feito com o material de divulgação que o produtor oferece aos afiliados.</p>
+  <p id="vd1">Abre com “E se você fosse sua própria chefe?”, passa pela simulação de ganhos (com aviso) e chega à oferta.</p>
+</article><article class="video" aria-labelledby="v2">
+  <video controls playsinline preload="metadata" poster="capa-pizza.webp" width="1080" height="1920" aria-describedby="vd2">
+    <source src="anuncio-unhas-pizza.mp4" type="video/mp4">
+    Seu navegador não toca vídeo. <a href="anuncio-unhas-pizza.mp4">Baixe o arquivo</a>.
+  </video>
+  <h3 id="v2" class="titulo-video">“Menos que uma pizza”</h3>
+  <p class="rotulo">30 s · 9:16 · com trilha</p>
+  <p id="vd2">Abre com “Aprenda design de unhas por menos que uma pizza”, comparando o preço do curso.</p>
+</article><article class="video" aria-labelledby="v3">
+  <video controls playsinline preload="metadata" poster="capa-essa-unha.webp" width="1080" height="1920" aria-describedby="vd3">
+    <source src="anuncio-unhas-essa-unha.mp4" type="video/mp4">
+    Seu navegador não toca vídeo. <a href="anuncio-unhas-essa-unha.mp4">Baixe o arquivo</a>.
+  </video>
+  <h3 id="v3" class="titulo-video">“Essa unha”</h3>
+  <p class="rotulo">30 s · 9:16 · com trilha</p>
+  <p id="vd3">Abre com “Você saberia fazer essa unha?”, a partir de uma foto real de unha do material do curso.</p>
+</article></div></section><section class="grupo" aria-labelledby="g1"><h2 id="g1">Vídeos do site</h2><p class="aviso">52 segundos cada. Feitos depois da página, usando a própria página como roteiro: técnicas, agenda, salão e oferta. Cada um começa por um caminho diferente.</p><div class="videos"><article class="video" aria-labelledby="v4">
+  <video controls playsinline preload="metadata" poster="capa-site-imagine.webp" width="1080" height="1920" aria-describedby="vd4">
+    <source src="site-imagine.mp4" type="video/mp4">
+    Seu navegador não toca vídeo. <a href="site-imagine.mp4">Baixe o arquivo</a>.
+  </video>
+  <h3 id="v4" class="titulo-video">“Imagine”</h3>
+  <p class="rotulo">52 s · 9:16 · com trilha</p>
+  <p id="vd4">Abre com “Imagine se a sua agenda estivesse cheia assim?” e segue pelas técnicas, pela agenda e pelo salão.</p>
+</article><article class="video" aria-labelledby="v5">
+  <video controls playsinline preload="metadata" poster="capa-site-salao.webp" width="1080" height="1920" aria-describedby="vd5">
+    <source src="site-salao.mp4" type="video/mp4">
+    Seu navegador não toca vídeo. <a href="site-salao.mp4">Baixe o arquivo</a>.
+  </video>
+  <h3 id="v5" class="titulo-video">“Salão”</h3>
+  <p class="rotulo">52 s · 9:16 · com trilha</p>
+  <p id="vd5">Abre com “E se você nunca mais pagasse salão?” e mostra que a mesma cliente volta para a manutenção.</p>
+</article><article class="video" aria-labelledby="v6">
+  <video controls playsinline preload="metadata" poster="capa-site-unha.webp" width="1080" height="1920" aria-describedby="vd6">
+    <source src="site-unha.mp4" type="video/mp4">
+    Seu navegador não toca vídeo. <a href="site-unha.mp4">Baixe o arquivo</a>.
+  </video>
+  <h3 id="v6" class="titulo-video">“Unha”</h3>
+  <p class="rotulo">52 s · 9:16 · com trilha</p>
+  <p id="vd6">Abre com “O que aconteceria se você soubesse fazer essa unha?” e passa pelas técnicas que o curso ensina.</p>
+</article></div></section>
+  <p class="aviso" style="margin-top:24px">Vídeos de portfólio do Estúdio Basileus, feitos com o material de divulgação que o produtor oferece aos afiliados. Os valores de faturamento são simulações e aparecem com aviso.</p>
   <footer class="credito">Criado por Roberto Siqueira · Estúdio Basileus</footer>
 </main>
 </body>
