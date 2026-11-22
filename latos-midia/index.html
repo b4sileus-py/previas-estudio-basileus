@@ -1,0 +1,743 @@
+<!doctype html>
+<!-- Criado por Roberto Siqueira · Estúdio Basileus | Versão 0.1 (protótipo de direção visual: abertura + Produção de Conteúdo) -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Latos Mídia · Produção de conteúdo para pequenos negócios</title>
+  <meta name="description" content="Vídeos do mês prontos para postar, com roteiro, direção e edição. Presença digital e comunicação visual para pequenos negócios. Rio de Janeiro e online.">
+  <meta name="author" content="Roberto Siqueira">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7f6f2">
+  <link rel="preload" href="fonts/archivo-variavel.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/ibm-plex-mono-500.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    /* Decide antes da primeira pintura se a página entra com movimento, para nada aparecer antes da entrada */
+    (function () {
+      var desligado = false;
+      try { desligado = localStorage.getItem('latos-movimento') === 'off'; } catch (e) {}
+      var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!desligado && !reduz) document.documentElement.classList.add('com-entrada');
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230b0b0b%27/%3E%3Cpath d=%27M7 20h6l-2 4H5zM14 20h6l-2 4h-6zM21 20h6l-2 4h-6z%27 fill=%27%23f6c324%27/%3E%3Cpath d=%27M14 20h6l-2 4h-6z%27 fill=%27%23f76c1d%27/%3E%3Cpath d=%27M21 20h6l-2 4h-6z%27 fill=%27%233586be%27/%3E%3Ccircle cx=%2716%27 cy=%2712%27 r=%274%27 fill=%27%23f76c1d%27/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para os pacotes</a>
+
+  <p class="faixa-demo">Demonstração · portfólio do Estúdio Basileus</p>
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="#abertura" aria-label="Latos Mídia, voltar ao início">
+        <img class="marca-letras" src="img/latos-letras.svg" alt="" width="866" height="199">
+        <span class="marca-faixas" aria-hidden="true">
+          <i class="faixa faixa-amarelo"></i><i class="faixa faixa-laranja"></i><i class="faixa faixa-azul"></i>
+        </span>
+      </a>
+      <div class="topo-direita">
+        <p class="rec" aria-hidden="true"><i class="rec-ponto"></i><span class="rec-texto">REC</span><span class="vu" id="vu"><i></i><i></i><i></i><i></i><i></i><i></i></span></p>
+        <button class="chave" id="chaveMov" type="button" aria-pressed="true">
+          <i aria-hidden="true"></i><span>Movimento</span>
+        </button>
+      </div>
+    </div>
+    <nav class="menu" aria-label="Seções da página">
+      <ul class="menu-lista" id="menuLista">
+        <li><a href="#trabalhos" style="--cor-item: var(--cor-tinta)">Trabalhos</a></li>
+        <li><a href="#conteudo" style="--cor-item: var(--cor-laranja)">Conteúdo</a></li>
+        <li><a href="#digital" style="--cor-item: var(--cor-azul)">Digital</a></li>
+        <li><a href="#visual" style="--cor-item: var(--cor-amarelo)">Visual</a></li>
+        <li><a href="#como-funciona" style="--cor-item: var(--cor-tinta)"><span class="menu-longo">Como funciona</span><span class="menu-curto" aria-hidden="true">Processo</span></a></li>
+        <li><a href="#quem-conduz" style="--cor-item: var(--cor-tinta)"><span class="menu-longo">Quem conduz</span><span class="menu-curto" aria-hidden="true">Sobre</span></a></li>
+        <li><a href="#duvidas" style="--cor-item: var(--cor-tinta)">Dúvidas</a></li>
+        <li class="menu-pedido"><a href="#contato" style="--cor-item: var(--cor-laranja)"><span class="menu-longo">Monte seu pedido</span><span class="menu-curto" aria-hidden="true">Pedido</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Abertura: o logo vira a linha do tempo de edição -->
+    <section class="abertura" id="abertura" aria-labelledby="titulo">
+      <div class="abertura-texto">
+        <p class="sobretitulo">Produção de conteúdo · Rio de Janeiro e online</p>
+        <h1 id="titulo" class="titulo">A gente <span class="sem-quebra"><span class="realce realce-grava">grava</span>.</span> Seu negócio <span class="sem-quebra"><span class="realce realce-aparece">aparece</span>.</span></h1>
+        <span class="realce-voo" aria-hidden="true"></span>
+        <p class="abertura-sub">Um dia de gravação por mês e os vídeos do mês prontos para postar, com roteiro, direção e edição. E o resto da sua presença também: Instagram, Google e impressos.</p>
+        <div class="acoes">
+          <a class="botao botao-principal" href="https://wa.me/5521992220681?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Latos%20e%20quero%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">
+            <svg class="icone-zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z"/><path class="zap-fone" d="M9.1 7.9c.3 0 .5 0 .7.5l.8 1.8c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.4-.2.7-.1l1.8.8c.4.2.5.4.5.7 0 1-.9 1.9-2 1.9-3.4 0-7-3.6-7-7 0-1.1.9-2 1.7-2.2Z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a class="botao botao-linha" href="#pacotes">Ver pacotes e preços</a>
+        </div>
+      </div>
+
+      <figure class="editor" aria-label="Trabalhos da Latos Mídia passando numa linha do tempo de edição">
+        <div class="monitor">
+          <div class="monitor-tela">
+            <img class="monitor-img ativa" id="monitorA" src="img/churrasco-hamburguer.webp" alt="" width="750" height="1000">
+            <img class="monitor-img" id="monitorB" src="img/churrasco-hamburguer.webp" alt="" width="750" height="1000">
+            <span class="canto canto-se" aria-hidden="true"></span><span class="canto canto-sd" aria-hidden="true"></span>
+            <span class="canto canto-ie" aria-hidden="true"></span><span class="canto canto-id" aria-hidden="true"></span>
+            <span class="monitor-formato" aria-hidden="true">9:16</span>
+            <span class="monitor-rotulo" id="monitorRotulo" aria-hidden="true">Gastronomia</span>
+            <span class="monitor-progresso" aria-hidden="true"><i id="monitorProgresso"></i></span>
+            <button class="monitor-ampliar" id="monitorAmpliar" type="button" aria-label="Ver a foto do monitor em tamanho grande"></button>
+          </div>
+          <button class="monitor-play" id="monitorPlay" type="button" aria-pressed="true" aria-label="Pausar a linha do tempo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="icone-pausa" d="M8 5h3v14H8zM13 5h3v14h-3z"/><path class="icone-play" d="M8 5l11 7-11 7z"/></svg>
+          </button>
+        </div>
+
+        <div class="linha-tempo" id="linhaTempo" aria-hidden="true">
+          <div class="regua" id="regua"></div>
+          <div class="trilha trilha-conteudo" data-cor="laranja">
+            <span class="trilha-nome">Conteúdo</span>
+            <div class="trilha-pista"><div class="trilha-fita" id="fitaConteudo"></div></div>
+          </div>
+          <div class="trilha trilha-digital" data-cor="azul">
+            <span class="trilha-nome">Digital</span>
+            <div class="trilha-pista"><div class="trilha-fita" id="fitaDigital"></div></div>
+          </div>
+          <div class="trilha trilha-visual" data-cor="amarelo">
+            <span class="trilha-nome">Visual</span>
+            <div class="trilha-pista"><div class="trilha-fita" id="fitaVisual"></div></div>
+          </div>
+          <div class="cabecote" id="cabecote"><i></i></div>
+        </div>
+        <figcaption class="editor-dica">Arraste a linha do tempo ou toque num clipe</figcaption>
+      </figure>
+    </section>
+
+    <!-- 2. Trabalhos: o material bruto da Latos, organizado em pastas como numa ilha de edição -->
+    <section class="trabalhos" id="trabalhos" aria-labelledby="trabalhosTitulo">
+      <div class="trabalhos-cabeca">
+        <p class="frente-etiqueta trabalhos-etiqueta"><i aria-hidden="true"></i>Material gravado</p>
+        <h2 id="trabalhosTitulo" class="frente-titulo">O que já passou pela câmera.</h2>
+        <p class="frente-texto">Treinos, palcos e eventos gastronômicos. Toque numa foto para ver grande.</p>
+      </div>
+
+      <div class="pastas" role="group" aria-label="Filtrar trabalhos por tipo">
+        <button class="pasta" type="button" data-filtro="todos" aria-pressed="true">Tudo <span class="pasta-num">10</span></button>
+        <button class="pasta" type="button" data-filtro="esporte" aria-pressed="false">Esporte <span class="pasta-num">3</span></button>
+        <button class="pasta" type="button" data-filtro="musica" aria-pressed="false">Música ao vivo <span class="pasta-num">4</span></button>
+        <button class="pasta" type="button" data-filtro="gastronomia" aria-pressed="false">Gastronomia <span class="pasta-num">3</span></button>
+      </div>
+
+      <ul class="galeria" id="galeria">
+          <li class="trabalho" data-cat="esporte">
+            <button class="trabalho-botao" type="button" data-foto="luta-chute" aria-label="Ampliar: Jovem dando um chute em equipamento durante treino de artes marciais">
+              <img src="img/luta-chute.webp" alt="Jovem dando um chute em equipamento durante treino de artes marciais" width="750" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 01</span>Esporte</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="esporte">
+            <button class="trabalho-botao" type="button" data-foto="luta-treino" aria-label="Ampliar: Dois praticantes fazendo exercício de movimentação na área de treino">
+              <img src="img/luta-treino.webp" alt="Dois praticantes fazendo exercício de movimentação na área de treino" width="750" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 02</span>Esporte</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="esporte">
+            <button class="trabalho-botao" type="button" data-foto="luta-imobilizacao" aria-label="Ampliar: Instrutor acompanhando exercício de imobilização durante aula de artes marciais">
+              <img src="img/luta-imobilizacao.webp" alt="Instrutor acompanhando exercício de imobilização durante aula de artes marciais" width="562" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 03</span>Esporte</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="musica">
+            <button class="trabalho-botao" type="button" data-foto="palco-guitarra" aria-label="Ampliar: Guitarrista durante apresentação musical ao vivo">
+              <img src="img/palco-guitarra.webp" alt="Guitarrista durante apresentação musical ao vivo" width="750" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 04</span>Música ao vivo</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="musica">
+            <button class="trabalho-botao" type="button" data-foto="palco-guitarrista" aria-label="Ampliar: Músico tocando guitarra em ambiente interno com luz cênica">
+              <img src="img/palco-guitarrista.webp" alt="Músico tocando guitarra em ambiente interno com luz cênica" width="750" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 05</span>Música ao vivo</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="musica">
+            <button class="trabalho-botao" type="button" data-foto="palco-maos" aria-label="Ampliar: Detalhe das mãos de um músico tocando guitarra sob luz vermelha">
+              <img src="img/palco-maos.webp" alt="Detalhe das mãos de um músico tocando guitarra sob luz vermelha" width="1000" height="750" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 06</span>Música ao vivo</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="musica">
+            <button class="trabalho-botao" type="button" data-foto="palco-bateria" aria-label="Ampliar: Baterista durante apresentação musical em espaço aberto">
+              <img src="img/palco-bateria.webp" alt="Baterista durante apresentação musical em espaço aberto" width="562" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 07</span>Música ao vivo</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="gastronomia">
+            <button class="trabalho-botao" type="button" data-foto="churrasco-cortes" aria-label="Ampliar: Cortes de carne fatiados sobre tábua de madeira">
+              <img src="img/churrasco-cortes.webp" alt="Cortes de carne fatiados sobre tábua de madeira" width="750" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 08</span>Gastronomia</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="gastronomia">
+            <button class="trabalho-botao" type="button" data-foto="churrasco-tempero" aria-label="Ampliar: Carne sendo temperada durante evento ao ar livre">
+              <img src="img/churrasco-tempero.webp" alt="Carne sendo temperada durante evento ao ar livre" width="750" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 09</span>Gastronomia</span>
+            </button>
+          </li>
+          <li class="trabalho" data-cat="gastronomia">
+            <button class="trabalho-botao" type="button" data-foto="churrasco-hamburguer" aria-label="Ampliar: Hambúrgueres artesanais fotografados contra o sol">
+              <img src="img/churrasco-hamburguer.webp" alt="Hambúrgueres artesanais fotografados contra o sol" width="750" height="1000" loading="lazy" decoding="async">
+              <span class="trabalho-info" aria-hidden="true"><span class="trabalho-num">Clipe 10</span>Gastronomia</span>
+            </button>
+          </li>
+      </ul>
+    </section>
+
+    <!-- 3. As três frentes: o índice da página, nas cores das trilhas -->
+    <section class="frentes" id="frentes" aria-labelledby="frentesTitulo">
+      <p class="frente-etiqueta frentes-etiqueta"><span class="frentes-faixas" aria-hidden="true"><i></i><i></i><i></i></span>Três trilhas, um objetivo</p>
+      <h2 id="frentesTitulo" class="frente-titulo">Do que sua empresa precisa agora?</h2>
+      <ol class="atalhos">
+        <li class="atalho" style="--cor-atalho: var(--cor-laranja); --cor-atalho-fundo: var(--cor-laranja-fundo)">
+          <a href="#conteudo">
+            <span class="atalho-num">01</span>
+            <span class="atalho-corpo">
+              <span class="atalho-nome">Produção de Conteúdo</span>
+              <span class="atalho-desc">Captação, roteiro, direção e edição. Vídeos prontos para postar.</span>
+            </span>
+            <span class="atalho-preco">a partir de <strong>R$ 600/mês</strong></span>
+            <svg class="frente-seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+        <li class="atalho" style="--cor-atalho: var(--cor-azul); --cor-atalho-fundo: var(--cor-azul-fundo)">
+          <a href="#digital">
+            <span class="atalho-num">02</span>
+            <span class="atalho-corpo">
+              <span class="atalho-nome">Soluções Digitais</span>
+              <span class="atalho-desc">Instagram profissional, Google Perfil da Empresa, mini site e página web.</span>
+            </span>
+            <span class="atalho-preco">a partir de <strong>R$ 150</strong></span>
+            <svg class="frente-seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+        <li class="atalho" style="--cor-atalho: var(--cor-amarelo); --cor-atalho-fundo: var(--cor-amarelo-fundo)">
+          <a href="#visual">
+            <span class="atalho-num">03</span>
+            <span class="atalho-corpo">
+              <span class="atalho-nome">Comunicação Visual</span>
+              <span class="atalho-desc">Cartões, panfletos, banners, adesivos e kits.</span>
+            </span>
+            <span class="atalho-preco">kits a partir de <strong>R$ 260</strong></span>
+            <svg class="frente-seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 4. Produção de Conteúdo (trilha laranja) -->
+    <section class="frente frente-conteudo" id="conteudo" aria-labelledby="conteudoTitulo">
+      <p class="frente-etiqueta"><i aria-hidden="true"></i>Trilha 01 · Produção de conteúdo</p>
+      <h2 id="conteudoTitulo" class="frente-titulo">Um dia de gravação. Vídeos para o mês inteiro.</h2>
+      <p class="frente-texto">A Latos planeja, escreve o roteiro, dirige a gravação e edita com legendas. Você aprova e posta.</p>
+
+      <div class="regua-horas" aria-hidden="true">
+        <span>0h</span><span>1h</span><span>2h</span><span>3h</span><span>4h</span>
+      </div>
+
+      <ol class="pacotes" id="pacotes">
+        <li class="pacote" data-horas="2" data-videos="4">
+          <div class="pacote-cabeca">
+            <h3 class="pacote-nome">Start</h3>
+            <p class="pacote-preco"><span class="moeda">R$</span> 600<span class="periodo">/mês</span></p>
+          </div>
+          <div class="pacote-medidas">
+            <p class="medida"><span class="medida-rotulo">Captação</span><span class="barra"><i></i></span><span class="medida-valor">até 2h</span></p>
+            <p class="medida"><span class="medida-rotulo">Vídeos curtos</span><span class="quadros"></span><span class="medida-valor">4 por mês</span></p>
+          </div>
+          <ul class="pacote-itens">
+            <li>Ideias e planejamento</li>
+            <li>Roteiro e direção na gravação</li>
+            <li>Edição completa com legendas</li>
+            <li>1 rodada de ajustes por vídeo</li>
+          </ul>
+          <a class="botao botao-linha pacote-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Latos%20e%20tenho%20interesse%20no%20pacote%20Start%20(R%24%20600%2Fm%C3%AAs)%20de%20produ%C3%A7%C3%A3o%20de%20conte%C3%BAdo." target="_blank" rel="noopener">Quero o Start</a>
+        </li>
+
+        <li class="pacote pacote-destaque" data-horas="3" data-videos="8">
+          <p class="selo"><span class="selo-faixas" aria-hidden="true"><i></i><i></i><i></i></span>Mais contratado</p>
+          <div class="pacote-cabeca">
+            <h3 class="pacote-nome">Pro</h3>
+            <p class="pacote-preco"><span class="moeda">R$</span> 850<span class="periodo">/mês</span></p>
+          </div>
+          <div class="pacote-medidas">
+            <p class="medida"><span class="medida-rotulo">Captação</span><span class="barra"><i></i></span><span class="medida-valor">até 3h</span></p>
+            <p class="medida"><span class="medida-rotulo">Vídeos curtos</span><span class="quadros"></span><span class="medida-valor">8 por mês</span></p>
+          </div>
+          <ul class="pacote-itens">
+            <li>Planejamento mensal</li>
+            <li>Roteiro e direção na gravação</li>
+            <li>Edição completa com legendas</li>
+            <li><strong>Capas para os vídeos</strong></li>
+            <li><strong>Fotos durante a captação</strong></li>
+            <li>1 rodada de ajustes por vídeo</li>
+          </ul>
+          <a class="botao botao-principal pacote-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Latos%20e%20tenho%20interesse%20no%20pacote%20Pro%20(R%24%20850%2Fm%C3%AAs)%20de%20produ%C3%A7%C3%A3o%20de%20conte%C3%BAdo." target="_blank" rel="noopener">Quero o Pro</a>
+        </li>
+
+        <li class="pacote" data-horas="4" data-videos="12">
+          <div class="pacote-cabeca">
+            <h3 class="pacote-nome">Premium</h3>
+            <p class="pacote-preco"><span class="moeda">R$</span> 1.200<span class="periodo">/mês</span></p>
+          </div>
+          <div class="pacote-medidas">
+            <p class="medida"><span class="medida-rotulo">Captação</span><span class="barra"><i></i></span><span class="medida-valor">até 4h</span></p>
+            <p class="medida"><span class="medida-rotulo">Vídeos curtos</span><span class="quadros"></span><span class="medida-valor">12 por mês</span></p>
+          </div>
+          <ul class="pacote-itens">
+            <li><strong>Planejamento estratégico</strong></li>
+            <li>Roteiro e direção na gravação</li>
+            <li>Edição completa com legendas</li>
+            <li>Capas para os vídeos</li>
+            <li><strong>Fotos profissionais inclusas</strong></li>
+            <li>1 rodada de ajustes por vídeo</li>
+          </ul>
+          <a class="botao botao-linha pacote-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Latos%20e%20tenho%20interesse%20no%20pacote%20Premium%20(R%24%201.200%2Fm%C3%AAs)%20de%20produ%C3%A7%C3%A3o%20de%20conte%C3%BAdo." target="_blank" rel="noopener">Quero o Premium</a>
+        </li>
+      </ol>
+
+      <div class="fora" aria-labelledby="foraTitulo">
+        <p class="fora-etiqueta">Fora da trilha</p>
+        <h3 id="foraTitulo" class="fora-titulo">Esses pacotes não incluem</h3>
+        <ul class="fora-lista">
+          <li class="fora-item">
+            <svg class="fora-icone" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="3"/><path d="M5 12.3h22M5 19.7h22M12.3 5v22M19.7 5v22"/></svg>
+            <span>Gestão das redes</span>
+          </li>
+          <li class="fora-item">
+            <svg class="fora-icone" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 5 4.5 14.2l9 3.3L27 5Zm0 0-9.8 22-3.7-9.5"/></svg>
+            <span>Publicação</span>
+          </li>
+          <li class="fora-item">
+            <svg class="fora-icone" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 7.5h20a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H14l-6 4.5v-4.5H6a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z"/><path class="fora-ponto" d="M11 15h.01M16 15h.01M21 15h.01"/></svg>
+            <span>Resposta de mensagens</span>
+          </li>
+          <li class="fora-item">
+            <svg class="fora-icone" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="9" width="18" height="18" rx="2.5"/><path d="M5 22V7a2 2 0 0 1 2-2h15"/><path d="m13 23 4-5 3 3.5 2-2.5 3 4"/></svg>
+            <span>Artes recorrentes</span>
+          </li>
+          <li class="fora-item">
+            <svg class="fora-icone" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 25h24"/><path d="m6 20 7-7 5 4 9-10"/><path d="M21 7h6v6"/></svg>
+            <span>Tráfego pago</span>
+          </li>
+        </ul>
+        <p class="fora-nota"><strong>Serviços contratados à parte.</strong> Montamos um <span class="fora-realce">plano estratégico sob medida</span> para a necessidade do seu negócio.</p>
+        <a class="botao botao-principal fora-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Latos%20e%20quero%20um%20or%C3%A7amento%20de%20servi%C3%A7os%20al%C3%A9m%20dos%20pacotes%3A%20gest%C3%A3o%20das%20redes%2C%20publica%C3%A7%C3%A3o%2C%20resposta%20de%20mensagens%2C%20artes%20recorrentes%20ou%20tr%C3%A1fego%20pago." target="_blank" rel="noopener">
+          <svg class="icone-zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z"/><path class="zap-fone" d="M9.1 7.9c.3 0 .5 0 .7.5l.8 1.8c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.4-.2.7-.1l1.8.8c.4.2.5.4.5.7 0 1-.9 1.9-2 1.9-3.4 0-7-3.6-7-7 0-1.1.9-2 1.7-2.2Z"/></svg>
+          <span>Pedir orçamento<span class="so-tela-larga"> desses serviços</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. Soluções Digitais (trilha azul) -->
+    <section class="frente frente-digital" id="digital" aria-labelledby="digitalTitulo">
+      <p class="frente-etiqueta"><i aria-hidden="true"></i>Trilha 02 · Soluções digitais</p>
+      <h2 id="digitalTitulo" class="frente-titulo">Fácil de achar. Fácil de chamar.</h2>
+      <p class="frente-texto">Instagram, Google e site arrumados para quem procura o seu negócio encontrar e falar com você. Feito online, para todo o Brasil. Escolha um ou mais serviços e mande o pedido de uma vez.</p>
+      <ol class="pacotes pacotes-4">
+        <li class="pacote servico" data-nome="Instagram profissional" data-preco="150">
+          <div class="servico-cabeca">
+            <svg class="servico-icone" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="6"/><circle cx="16" cy="16" r="5"/><path class="icone-ponto" d="M22 10h.01"/></svg>
+            <h3 class="pacote-nome">Instagram profissional</h3>
+          </div>
+          <p class="pacote-preco servico-preco"><span class="a-partir">a partir de</span><span class="moeda">R$</span> 150</p>
+          <p class="servico-cond">Valor conforme o escopo</p>
+          <ul class="pacote-itens">
+            <li>Bio estratégica</li>
+            <li>Ajuste de foto e informações</li>
+            <li>Categoria e botões de contato</li>
+            <li>Destaques</li>
+            <li>Orientações de identidade visual</li>
+          </ul>
+          <button class="botao botao-linha pacote-botao servico-escolher" type="button" aria-pressed="false"><svg class="icone-mais" viewBox="0 0 24 24" aria-hidden="true"><path class="traco-v" d="M12 5v14"/><path d="M5 12h14"/></svg><span class="escolher-texto">Adicionar ao pedido</span><span class="visualmente-oculto"> Instagram profissional</span></button>
+        </li>
+        <li class="pacote servico" data-nome="Google Perfil da Empresa" data-preco="250">
+          <div class="servico-cabeca">
+            <svg class="servico-icone" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28s9-8.2 9-15a9 9 0 0 0-18 0c0 6.8 9 15 9 15Z"/><circle cx="16" cy="13" r="3.2"/></svg>
+            <h3 class="pacote-nome">Google Perfil da Empresa</h3>
+          </div>
+          <p class="pacote-preco servico-preco"><span class="a-partir">a partir de</span><span class="moeda">R$</span> 250</p>
+          <p class="servico-cond">Valor conforme a verificação</p>
+          <ul class="pacote-itens">
+            <li>Criação ou otimização do perfil</li>
+            <li>Descrição, horários e contatos</li>
+            <li>Categoria do negócio</li>
+            <li>Orientações de fotos e de avaliações</li>
+          </ul>
+          <button class="botao botao-linha pacote-botao servico-escolher" type="button" aria-pressed="false"><svg class="icone-mais" viewBox="0 0 24 24" aria-hidden="true"><path class="traco-v" d="M12 5v14"/><path d="M5 12h14"/></svg><span class="escolher-texto">Adicionar ao pedido</span><span class="visualmente-oculto"> Google Perfil da Empresa</span></button>
+        </li>
+        <li class="pacote servico" data-nome="Mini site para link na bio" data-preco="150">
+          <div class="servico-cabeca">
+            <svg class="servico-icone" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="3.5" width="14" height="25" rx="3"/><path d="M13 10h6M13 14.5h6M13 19h6"/></svg>
+            <h3 class="pacote-nome">Mini site para link na bio</h3>
+          </div>
+          <p class="pacote-preco servico-preco"><span class="a-partir">a partir de</span><span class="moeda">R$</span> 150</p>
+          <p class="servico-cond">Valor conforme a personalização</p>
+          <ul class="pacote-itens">
+            <li>Botão de WhatsApp em destaque</li>
+            <li>Links principais</li>
+            <li>Resumo dos serviços</li>
+            <li>Localização</li>
+          </ul>
+          <button class="botao botao-linha pacote-botao servico-escolher" type="button" aria-pressed="false"><svg class="icone-mais" viewBox="0 0 24 24" aria-hidden="true"><path class="traco-v" d="M12 5v14"/><path d="M5 12h14"/></svg><span class="escolher-texto">Adicionar ao pedido</span><span class="visualmente-oculto"> Mini site para link na bio</span></button>
+        </li>
+        <li class="pacote servico" data-nome="Página web" data-preco="700">
+          <div class="servico-cabeca">
+            <svg class="servico-icone" viewBox="0 0 32 32" aria-hidden="true"><rect x="3.5" y="6" width="25" height="20" rx="2.5"/><path d="M3.5 11h25"/><path class="icone-ponto" d="M7 8.5h.01M10 8.5h.01"/></svg>
+            <h3 class="pacote-nome">Página web</h3>
+          </div>
+          <p class="pacote-preco servico-preco"><span class="a-partir">a partir de</span><span class="moeda">R$</span> 700</p>
+          <p class="servico-cond">Escopo combinado por escrito</p>
+          <ul class="pacote-itens">
+            <li>Apresentação do negócio</li>
+            <li>Resumo dos serviços</li>
+            <li>Contato e localização</li>
+            <li>Botões de WhatsApp e redes</li>
+            <li>Orientação sobre domínio e hospedagem</li>
+          </ul>
+          <button class="botao botao-linha pacote-botao servico-escolher" type="button" aria-pressed="false"><svg class="icone-mais" viewBox="0 0 24 24" aria-hidden="true"><path class="traco-v" d="M12 5v14"/><path d="M5 12h14"/></svg><span class="escolher-texto">Adicionar ao pedido</span><span class="visualmente-oculto"> Página web</span></button>
+        </li>
+      </ol>
+      <div class="pedido" id="pedidoDigital" data-vazio="true">
+        <p class="pedido-resumo" id="pedidoResumo" aria-live="polite">Escolha um ou mais serviços acima.</p>
+        <a class="botao botao-principal pedido-botao" id="pedidoBotao" href="#digital" aria-disabled="true" target="_blank" rel="noopener">
+          <svg class="icone-zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z"/><path class="zap-fone" d="M9.1 7.9c.3 0 .5 0 .7.5l.8 1.8c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.4-.2.7-.1l1.8.8c.4.2.5.4.5.7 0 1-.9 1.9-2 1.9-3.4 0-7-3.6-7-7 0-1.1.9-2 1.7-2.2Z"/></svg>
+          Enviar pedido
+        </a>
+      </div>
+    </section>
+
+    <!-- 6. Comunicação Visual (trilha amarela) -->
+    <section class="frente frente-visual" id="visual" aria-labelledby="visualTitulo">
+      <p class="frente-etiqueta"><i aria-hidden="true"></i>Trilha 03 · Comunicação visual</p>
+      <h2 id="visualTitulo" class="frente-titulo">Sua marca na mão de quem passa na porta.</h2>
+      <p class="frente-texto">Cartões, panfletos e banner com arte criada pela Latos. Kits com preço fechado, para a presença local do seu negócio.</p>
+      <ol class="pacotes">
+        <li class="pacote kit">
+          <div class="pacote-cabeca">
+            <h3 class="pacote-nome">Kit Básico</h3>
+            <p class="pacote-preco"><span class="moeda">R$</span> 260<span class="periodo"> preço fechado</span></p>
+          </div>
+          <div class="pacote-medidas">
+            <p class="medida"><span class="medida-rotulo">Cartões</span><span class="barra"><i style="--horas-fracao: 0.5"></i></span><span class="medida-valor">1.000</span></p>
+            <p class="medida"><span class="medida-rotulo">Panfletos</span><span class="barra"><i style="--horas-fracao: 0.4"></i></span><span class="medida-valor">1.000</span></p>
+            <p class="medida"><span class="medida-rotulo">Banner de lona</span><span class="barra"><i style="--horas-fracao: 0"></i></span><span class="medida-valor">não inclui</span></p>
+          </div>
+          <ul class="pacote-itens">
+            <li>Criação das artes</li>
+            <li>Entrega dos arquivos</li>
+          </ul>
+          <a class="botao botao-linha pacote-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Latos%20e%20tenho%20interesse%20no%20Kit%20B%C3%A1sico%20%28R%24%20260%29%20de%20comunica%C3%A7%C3%A3o%20visual." target="_blank" rel="noopener">Quero o Kit Básico</a>
+        </li>
+        <li class="pacote kit pacote-destaque">
+          <p class="selo"><span class="selo-faixas" aria-hidden="true"><i></i><i></i><i></i></span>Melhor custo-benefício</p>
+          <div class="pacote-cabeca">
+            <h3 class="pacote-nome">Kit Essencial</h3>
+            <p class="pacote-preco"><span class="moeda">R$</span> 400<span class="periodo"> preço fechado</span></p>
+          </div>
+          <div class="pacote-medidas">
+            <p class="medida"><span class="medida-rotulo">Cartões</span><span class="barra"><i style="--horas-fracao: 0.5"></i></span><span class="medida-valor">1.000</span></p>
+            <p class="medida"><span class="medida-rotulo">Panfletos</span><span class="barra"><i style="--horas-fracao: 1.0"></i></span><span class="medida-valor">2.500</span></p>
+            <p class="medida"><span class="medida-rotulo">Banner de lona</span><span class="barra"><i style="--horas-fracao: 1"></i></span><span class="medida-valor">120 × 80 cm</span></p>
+          </div>
+          <ul class="pacote-itens">
+            <li>Criação das artes</li>
+            <li>Entrega dos arquivos</li>
+          </ul>
+          <a class="botao botao-principal pacote-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Latos%20e%20tenho%20interesse%20no%20Kit%20Essencial%20%28R%24%20400%29%20de%20comunica%C3%A7%C3%A3o%20visual." target="_blank" rel="noopener">Quero o Kit Essencial</a>
+        </li>
+        <li class="pacote kit">
+          <div class="pacote-cabeca">
+            <h3 class="pacote-nome">Kit Master</h3>
+            <p class="pacote-preco"><span class="moeda">R$</span> 530<span class="periodo"> preço fechado</span></p>
+          </div>
+          <div class="pacote-medidas">
+            <p class="medida"><span class="medida-rotulo">Cartões</span><span class="barra"><i style="--horas-fracao: 1.0"></i></span><span class="medida-valor">2.000</span></p>
+            <p class="medida"><span class="medida-rotulo">Panfletos</span><span class="barra"><i style="--horas-fracao: 1.0"></i></span><span class="medida-valor">2.500</span></p>
+            <p class="medida"><span class="medida-rotulo">Banner de lona</span><span class="barra"><i style="--horas-fracao: 1"></i></span><span class="medida-valor">120 × 80 cm</span></p>
+          </div>
+          <ul class="pacote-itens">
+            <li>Criação das artes</li>
+            <li>Entrega dos arquivos</li>
+          </ul>
+          <a class="botao botao-linha pacote-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Latos%20e%20tenho%20interesse%20no%20Kit%20Master%20%28R%24%20530%29%20de%20comunica%C3%A7%C3%A3o%20visual." target="_blank" rel="noopener">Quero o Kit Master</a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 7. Como funciona: quatro cenas; a rolagem leva o cabeçote pela trilha -->
+    <section class="processo" id="como-funciona" aria-labelledby="processoTitulo">
+      <div class="processo-cabeca">
+        <p class="frente-etiqueta processo-etiqueta"><span class="frentes-faixas" aria-hidden="true"><i></i><i></i><i></i></span>Como funciona</p>
+        <h2 id="processoTitulo" class="frente-titulo">Quatro cenas, do primeiro papo à entrega.</h2>
+        <p class="frente-texto">Vale para qualquer trilha: conteúdo, digital ou visual.</p>
+      </div>
+      <div class="cenas-area">
+        <div class="cenas-trilha" aria-hidden="true"><i class="cenas-preenchimento"></i><i class="cenas-cabecote"></i></div>
+        <ol class="cenas">
+        <li class="cena">
+          <span class="cena-marcador">
+            <svg class="claquete" viewBox="0 0 40 36" aria-hidden="true">
+              <rect class="claquete-corpo" x="3" y="13" width="34" height="20" rx="2.5"/>
+              <path class="claquete-linha" d="M8 21h24M8 27h15"/>
+              <g class="claquete-braco">
+                <rect x="3" y="5" width="34" height="7" rx="1.5" class="claquete-barra"/>
+                <path class="claquete-f1" d="M9 5h5l-3 7H6z"/><path class="claquete-f2" d="M18 5h5l-3 7h-5z"/><path class="claquete-f3" d="M27 5h5l-3 7h-5z"/>
+              </g>
+            </svg>
+          </span>
+          <p class="cena-num">Cena 01</p>
+          <h3 class="cena-titulo">Mapeamos o seu objetivo</h3>
+          <p class="cena-texto">Uma conversa rápida para entender o seu momento, o seu público e onde a sua marca precisa crescer agora.</p>
+        </li>
+        <li class="cena">
+          <span class="cena-marcador">
+            <svg class="claquete" viewBox="0 0 40 36" aria-hidden="true">
+              <rect class="claquete-corpo" x="3" y="13" width="34" height="20" rx="2.5"/>
+              <path class="claquete-linha" d="M8 21h24M8 27h15"/>
+              <g class="claquete-braco">
+                <rect x="3" y="5" width="34" height="7" rx="1.5" class="claquete-barra"/>
+                <path class="claquete-f1" d="M9 5h5l-3 7H6z"/><path class="claquete-f2" d="M18 5h5l-3 7h-5z"/><path class="claquete-f3" d="M27 5h5l-3 7h-5z"/>
+              </g>
+            </svg>
+          </span>
+          <p class="cena-num">Cena 02</p>
+          <h3 class="cena-titulo">Desenhamos o plano ideal</h3>
+          <p class="cena-texto">Indicamos só os serviços que fazem sentido para o seu negócio agora, sem empurrar o que você não precisa.</p>
+        </li>
+        <li class="cena">
+          <span class="cena-marcador">
+            <svg class="claquete" viewBox="0 0 40 36" aria-hidden="true">
+              <rect class="claquete-corpo" x="3" y="13" width="34" height="20" rx="2.5"/>
+              <path class="claquete-linha" d="M8 21h24M8 27h15"/>
+              <g class="claquete-braco">
+                <rect x="3" y="5" width="34" height="7" rx="1.5" class="claquete-barra"/>
+                <path class="claquete-f1" d="M9 5h5l-3 7H6z"/><path class="claquete-f2" d="M18 5h5l-3 7h-5z"/><path class="claquete-f3" d="M27 5h5l-3 7h-5z"/>
+              </g>
+            </svg>
+          </span>
+          <p class="cena-num">Cena 03</p>
+          <h3 class="cena-titulo">Produção sem dor de cabeça</h3>
+          <p class="cena-texto">Cuidamos da criação, da edição e dos ajustes técnicos, com prazos claros, combinados desde o início.</p>
+        </li>
+        <li class="cena">
+          <span class="cena-marcador">
+            <svg class="claquete" viewBox="0 0 40 36" aria-hidden="true">
+              <rect class="claquete-corpo" x="3" y="13" width="34" height="20" rx="2.5"/>
+              <path class="claquete-linha" d="M8 21h24M8 27h15"/>
+              <g class="claquete-braco">
+                <rect x="3" y="5" width="34" height="7" rx="1.5" class="claquete-barra"/>
+                <path class="claquete-f1" d="M9 5h5l-3 7H6z"/><path class="claquete-f2" d="M18 5h5l-3 7h-5z"/><path class="claquete-f3" d="M27 5h5l-3 7h-5z"/>
+              </g>
+            </svg>
+          </span>
+          <p class="cena-num">Cena 04</p>
+          <h3 class="cena-titulo">Sua marca vira referência</h3>
+          <p class="cena-texto">Sua presença fica profissional, passa confiança e faz o seu negócio ser visto, lembrado e escolhido.</p>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 8. Quem conduz: o Roni, com fotos de bastidor -->
+    <section class="quem" id="quem-conduz" aria-labelledby="quemTitulo">
+      <div class="quem-fotos">
+        <figure class="quem-principal">
+          <img src="img/roni-bone.webp" alt="Roni Santos, com boné escrito Videomaker, enquadrando uma cena no celular preso ao tripé" width="1100" height="1100" loading="lazy" decoding="async">
+          <span class="canto canto-se" aria-hidden="true"></span><span class="canto canto-sd" aria-hidden="true"></span>
+          <span class="canto canto-ie" aria-hidden="true"></span><span class="canto canto-id" aria-hidden="true"></span>
+          <span class="quem-rec" aria-hidden="true"><i></i>Bastidor</span>
+        </figure>
+        <ul class="quem-tira">
+          <li><img src="img/roni-gimbal.webp" alt="Roni de perfil segurando um estabilizador com celular, em preto e branco" width="830" height="1100" loading="lazy" decoding="async"></li>
+          <li><img src="img/roni-estudio.webp" alt="Roni sentado num banco ao lado de uma câmera no tripé, em estúdio com janela ao fundo" width="883" height="1100" loading="lazy" decoding="async"></li>
+          <li><img src="img/roni-silhueta.webp" alt="Silhueta do Roni de perfil contra uma luz de estúdio octogonal" width="1100" height="622" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+
+      <div class="quem-texto">
+        <p class="frente-etiqueta"><span class="frentes-faixas" aria-hidden="true"><i></i><i></i><i></i></span>Quem conduz</p>
+        <h2 id="quemTitulo" class="frente-titulo">Quem está atrás da câmera.</h2>
+        <p class="frente-texto">A Latos Mídia nasceu para ajudar pequenos negócios a se comunicarem de um jeito mais profissional e consistente. Uma operação próxima, prática e pensada para a realidade de cada empresa.</p>
+
+        <div class="quem-cartao">
+          <img class="quem-avatar" src="img/roni-avatar.webp" alt="" width="240" height="240" loading="lazy" decoding="async">
+          <p class="quem-nome"><strong>Roni Santos</strong><span>Fundador e direção dos projetos</span></p>
+        </div>
+
+        <dl class="quem-dados">
+          <div><dt>Presencial</dt><dd>Rio de Janeiro e região</dd></div>
+          <div><dt>Online</dt><dd>Todo o Brasil</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/latosmidia/" target="_blank" rel="noopener">@latosmidia</a></dd></div>
+        </dl>
+
+        <a class="botao botao-principal quem-botao" href="https://wa.me/5521992220681?text=Ol%C3%A1%2C%20Roni%21%20Vim%20pelo%20site%20da%20Latos%20e%20quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener"><svg class="icone-zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z"/><path class="zap-fone" d="M9.1 7.9c.3 0 .5 0 .7.5l.8 1.8c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.4-.2.7-.1l1.8.8c.4.2.5.4.5.7 0 1-.9 1.9-2 1.9-3.4 0-7-3.6-7-7 0-1.1.9-2 1.7-2.2Z"/></svg>Falar com o Roni</a>
+      </div>
+    </section>
+
+    <!-- 9. Dúvidas: só com fatos confirmados -->
+    <section class="duvidas" id="duvidas" aria-labelledby="duvidasTitulo">
+      <div class="duvidas-cabeca">
+        <p class="frente-etiqueta"><span class="frentes-faixas" aria-hidden="true"><i></i><i></i><i></i></span>Dúvidas</p>
+        <h2 id="duvidasTitulo" class="frente-titulo">Antes de chamar.</h2>
+        <p class="frente-texto">O que mais perguntam para a Latos.</p>
+      </div>
+      <div class="duvidas-lista">
+        <details class="duvida">
+          <summary><span>Os pacotes de conteúdo incluem postar nas redes?</span><i class="duvida-sinal" aria-hidden="true"></i></summary>
+          <p>Não. Os pacotes cuidam da produção: planejamento, roteiro, gravação, edição e entrega dos vídeos prontos. Gestão das redes, publicação, resposta de mensagens, artes recorrentes e tráfego pago são contratados à parte, num plano sob medida.</p>
+        </details>
+        <details class="duvida">
+          <summary><span>Vocês atendem fora do Rio de Janeiro?</span><i class="duvida-sinal" aria-hidden="true"></i></summary>
+          <p>A gravação presencial atende o Rio de Janeiro e região. Os serviços digitais (Instagram, Google Perfil, mini site e página web) são feitos online e atendem todo o Brasil.</p>
+        </details>
+        <details class="duvida">
+          <summary><span>Quanto tempo dura a gravação do mês?</span><i class="duvida-sinal" aria-hidden="true"></i></summary>
+          <p>É uma captação por mês: até 2 horas no Start, até 3 horas no Pro e até 4 horas no Premium. Nesse dia saem os vídeos do mês inteiro.</p>
+        </details>
+        <details class="duvida">
+          <summary><span>Posso pedir ajustes nos vídeos?</span><i class="duvida-sinal" aria-hidden="true"></i></summary>
+          <p>Sim. Todos os pacotes incluem 1 rodada de ajustes por vídeo.</p>
+        </details>
+        <details class="duvida">
+          <summary><span>Por que os serviços digitais são "a partir de"?</span><i class="duvida-sinal" aria-hidden="true"></i></summary>
+          <p>Porque o valor final depende do que o seu negócio precisa: do escopo no Instagram, da verificação no Google Perfil, da personalização no mini site e de um escopo combinado por escrito na página web. O orçamento vem antes de qualquer trabalho.</p>
+        </details>
+        <details class="duvida">
+          <summary><span>Os kits de impressos já vêm com a arte?</span><i class="duvida-sinal" aria-hidden="true"></i></summary>
+          <p>Sim. Os três kits incluem a criação das artes e a entrega dos arquivos, com preço fechado.</p>
+        </details>
+        <details class="duvida">
+          <summary><span>Posso contratar mais de um serviço?</span><i class="duvida-sinal" aria-hidden="true"></i></summary>
+          <p>Pode. A Latos indica o serviço ou a combinação que faz sentido para o seu momento. Monte o seu pedido logo abaixo e mande tudo numa mensagem só.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 10. Monte seu pedido: a ilha de edição à noite; a mensagem se escreve sozinha -->
+    <section class="pedir" id="contato" aria-labelledby="pedirTitulo">
+      <div class="pedir-interno">
+        <div class="pedir-cabeca">
+          <p class="pedir-etiqueta"><i class="rec-ponto" aria-hidden="true"></i>Monte seu pedido</p>
+          <h2 id="pedirTitulo" class="pedir-titulo">Toque, confira e mande.</h2>
+          <p class="pedir-texto">Escolha o que precisa e a mensagem fica pronta. Nada para digitar.</p>
+        </div>
+
+        <div class="pedir-corpo">
+          <div class="pedir-passos">
+            <fieldset class="passo">
+              <legend><span class="passo-num">1</span>Do que você precisa?<small>Pode marcar mais de um</small></legend>
+              <div class="chips" data-grupo="servicos" data-multiplo="true"><button class="chip" type="button" data-valor="vídeos para as redes" aria-pressed="false" style="--cor-chip: var(--cor-laranja)">Vídeos para as redes</button><button class="chip" type="button" data-valor="Instagram profissional" aria-pressed="false" style="--cor-chip: var(--cor-azul)">Instagram profissional</button><button class="chip" type="button" data-valor="Google Perfil da Empresa" aria-pressed="false" style="--cor-chip: var(--cor-azul)">Google Perfil</button><button class="chip" type="button" data-valor="mini site para link na bio" aria-pressed="false" style="--cor-chip: var(--cor-azul)">Mini site</button><button class="chip" type="button" data-valor="página web" aria-pressed="false" style="--cor-chip: var(--cor-azul)">Página web</button><button class="chip" type="button" data-valor="cartões, panfletos ou banner" aria-pressed="false" style="--cor-chip: var(--cor-amarelo)">Cartões, panfletos ou banner</button><button class="chip" type="button" data-valor="ajuda para escolher" aria-pressed="false">Ainda não sei</button></div>
+            </fieldset>
+            <fieldset class="passo">
+              <legend><span class="passo-num">2</span>Qual é o seu ramo?</legend>
+              <div class="chips" data-grupo="negocio"><button class="chip" type="button" data-valor="Tenho um comércio" aria-pressed="false">Comércio ou loja</button><button class="chip" type="button" data-valor="Tenho um negócio de alimentação" aria-pressed="false">Alimentação</button><button class="chip" type="button" data-valor="Tenho um negócio de beleza e estética" aria-pressed="false">Beleza e estética</button><button class="chip" type="button" data-valor="Atuo na área da saúde" aria-pressed="false">Saúde</button><button class="chip" type="button" data-valor="Trabalho com academia ou esporte" aria-pressed="false">Academia ou esporte</button><button class="chip" type="button" data-valor="Sou de uma igreja ou trabalho com eventos" aria-pressed="false">Igreja ou eventos</button><button class="chip" type="button" data-valor="Presto serviços" aria-pressed="false">Prestação de serviços</button><button class="chip" type="button" data-valor="Tenho um negócio" aria-pressed="false">Outro tipo de negócio</button></div>
+            </fieldset>
+            <fieldset class="passo">
+              <legend><span class="passo-num">3</span>Onde ele fica?</legend>
+              <div class="chips" data-grupo="lugar"><button class="chip" type="button" data-valor="no Rio de Janeiro e região" aria-pressed="false">Rio de Janeiro e região</button><button class="chip" type="button" data-valor="fora do Rio de Janeiro" aria-pressed="false">Outra cidade</button></div>
+            </fieldset>
+            <div class="passo passo-nome">
+              <label for="nomeNegocio"><span class="passo-num">4</span>Nome do negócio <small>opcional</small></label>
+              <input id="nomeNegocio" type="text" autocomplete="organization" maxlength="60" placeholder="Ex.: Padaria do Centro">
+            </div>
+          </div>
+
+          <div class="pedir-previa" id="previaPedido">
+            <p class="previa-rotulo">Sua mensagem</p>
+            <div class="balao" id="balao" aria-live="polite"></div>
+            <a class="botao pedir-botao" id="pedirBotao" href="#contato" aria-disabled="true" tabindex="-1" target="_blank" rel="noopener"><svg class="icone-zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z"/><path class="zap-fone" d="M9.1 7.9c.3 0 .5 0 .7.5l.8 1.8c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.4-.2.7-.1l1.8.8c.4.2.5.4.5.7 0 1-.9 1.9-2 1.9-3.4 0-7-3.6-7-7 0-1.1.9-2 1.7-2.2Z"/></svg>Enviar no WhatsApp</a>
+            <p class="pedir-aviso" id="pedirAviso">Escolha pelo menos um serviço no passo 1.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Fechamento: a cartela final do vídeo -->
+    <section class="cartela" id="fechamento" aria-labelledby="cartelaTitulo">
+      <div class="cartela-interno">
+        <div class="cartela-logo" aria-hidden="true">
+          <img src="img/latos-letras.svg" alt="" width="866" height="199">
+          <span class="cartela-faixas"><i class="faixa faixa-amarelo"></i><i class="faixa faixa-laranja"></i><i class="faixa faixa-azul"></i></span>
+        </div>
+        <h2 id="cartelaTitulo" class="cartela-titulo">Vamos entender o que sua empresa precisa agora?</h2>
+        <div class="cartela-acoes">
+          <a class="botao botao-principal" href="https://wa.me/5521992220681?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Latos%20e%20quero%20entender%20o%20que%20o%20meu%20neg%C3%B3cio%20precisa%20agora." target="_blank" rel="noopener"><svg class="icone-zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z"/><path class="zap-fone" d="M9.1 7.9c.3 0 .5 0 .7.5l.8 1.8c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.4-.2.7-.1l1.8.8c.4.2.5.4.5.7 0 1-.9 1.9-2 1.9-3.4 0-7-3.6-7-7 0-1.1.9-2 1.7-2.2Z"/></svg>Chamar no WhatsApp</a>
+          <a class="botao botao-linha" href="https://www.instagram.com/latosmidia/" target="_blank" rel="noopener">Ver o Instagram</a>
+        </div>
+        <ul class="cartela-contatos">
+          <li><span>WhatsApp</span><a href="https://wa.me/5521992220681?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Latos%20e%20quero%20entender%20o%20que%20o%20meu%20neg%C3%B3cio%20precisa%20agora." target="_blank" rel="noopener">(21) 99222-0681</a></li>
+          <li><span>E-mail</span><a href="mailto:contato@latosmidia.com.br">contato@latosmidia.com.br</a></li>
+          <li><span>Instagram</span><a href="https://www.instagram.com/latosmidia/" target="_blank" rel="noopener">@latosmidia</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer class="rodape">
+    <div class="rodape-interno">
+      <p class="rodape-texto">© 2026 Latos Mídia. Página demonstrativa, criada como portfólio do Estúdio Basileus com autorização da Latos Mídia.</p>
+      <button class="assinatura" type="button" id="assinatura" aria-label="Criado por Roberto Siqueira, Estúdio Basileus">
+        <span class="assinatura-claquete" aria-hidden="true">
+          <svg viewBox="0 0 40 36"><rect class="claquete-corpo" x="3" y="13" width="34" height="20" rx="2.5"/><g class="assinatura-braco"><rect x="3" y="5" width="34" height="7" rx="1.5" class="claquete-barra"/><path class="claquete-f1" d="M9 5h5l-3 7H6z"/><path class="claquete-f2" d="M18 5h5l-3 7h-5z"/><path class="claquete-f3" d="M27 5h5l-3 7h-5z"/></g></svg>
+          <b>Corta!</b>
+        </span>
+        <svg class="coroa" viewBox="0 0 32 24" aria-hidden="true"><path d="M3 20 L5 6 L11 13 L16 3 L21 13 L27 6 L29 20 Z"/><path class="coroa-base" d="M4 22 H28"/></svg>
+        <span>Criado por Roberto Siqueira · Estúdio Basileus</span>
+      </button>
+    </div>
+    <div class="assinatura-faixas" aria-hidden="true"><i></i><i></i><i></i></div>
+  </footer>
+
+  <!-- Foto ampliada: janela modal nativa (foco preso, Esc fecha, o fundo fica inerte) -->
+  <dialog class="visor" id="visor" aria-labelledby="visorLegenda">
+    <figure class="visor-quadro">
+      <img class="visor-img" id="visorImg" src="" alt="">
+      <span class="canto canto-se" aria-hidden="true"></span><span class="canto canto-sd" aria-hidden="true"></span>
+      <span class="canto canto-ie" aria-hidden="true"></span><span class="canto canto-id" aria-hidden="true"></span>
+      <figcaption class="visor-legenda" id="visorLegenda"></figcaption>
+    </figure>
+    <div class="visor-controles">
+      <button class="visor-botao" id="visorAnt" type="button" aria-label="Foto anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <p class="visor-contagem" id="visorContagem" aria-live="polite"></p>
+      <button class="visor-botao" id="visorProx" type="button" aria-label="Próxima foto">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <button class="visor-fechar" id="visorFechar" type="button" aria-label="Fechar foto">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </dialog>
+
+  <!-- Voltar ao início: o anel mostra quanto da página já passou, como um rolo de filme -->
+  <button class="voltar-topo" id="voltarTopo" type="button" aria-label="Voltar ao início da página" tabindex="-1" aria-hidden="true">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="voltar-trilho" cx="24" cy="24" r="21"/>
+      <circle class="voltar-anel" id="voltarAnel" cx="24" cy="24" r="21"/>
+      <path class="voltar-seta" d="M24 31V17M17.5 23.5 24 17l6.5 6.5"/>
+    </svg>
+  </button>
+
+  <!-- Celular: enquanto a pessoa escolhe no "monte seu pedido", a barra mostra o andamento e leva até a mensagem -->
+  <div class="ver-mensagem" id="verMensagem" aria-hidden="true">
+    <p id="verResumo">Nenhum serviço escolhido ainda</p>
+    <a class="botao botao-principal" id="verBotao" href="#previaPedido" tabindex="-1">Ver mensagem</a>
+  </div>
+
+  <!-- Faixas que saem do logo e viram as trilhas na abertura -->
+  <div class="voo" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/SplitText.min.js"></script>
+  <script src="vendor/Flip.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

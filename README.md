@@ -8,6 +8,7 @@ Páginas de demonstração criadas pelo **Estúdio Basileus** e publicadas pelo 
 |---|---|---|
 | [Carolina Miranda](carolina-miranda/) | Maquiadora e cabeleireira a domicílio | **[Ver a página](https://b4sileus-py.github.io/previas-estudio-basileus/carolina-miranda/)** |
 | [Escola Designer de Unhas](escola-designer-unhas/) | Página de afiliado de curso online (portfólio) | **[Ver a página](https://b4sileus-py.github.io/previas-estudio-basileus/escola-designer-unhas/)** |
+| [Latos Mídia](latos-midia/) | Produção de conteúdo e comunicação para pequenos negócios (portfólio) | **[Ver a página](https://b4sileus-py.github.io/previas-estudio-basileus/latos-midia/)** |
 
 > 📱 As páginas são pensadas primeiro para o celular. Abra o link no seu aparelho para ver como a cliente vê.
 
@@ -29,7 +30,8 @@ Páginas de demonstração criadas pelo **Estúdio Basileus** e publicadas pelo 
 Algumas páginas são **experimentos do próprio estúdio**, publicados como portfólio, e não demonstrações para um negócio.
 Elas dizem isso no topo e no rodapé e também ficam fora dos buscadores. A página de afiliado de unhas usa o material de
 divulgação que o produtor do curso fornece aos afiliados (preço, fotos de unhas e comentários de alunas, sem rostos e
-com nomes abreviados como no original).
+com nomes abreviados como no original). A página da Latos Mídia foi feita com autorização da empresa, usando as
+informações do site oficial dela e fotos cedidas pelo fundador.
 
 ## 🛠️ Tecnologias
 
